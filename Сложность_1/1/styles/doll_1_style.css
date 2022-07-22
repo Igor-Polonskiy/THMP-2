@@ -77,6 +77,8 @@ min-height: 100%; */
 .doll_1_Well_done {
   height: 150px;
   position: absolute;
+  top: 200px;
+  z-index: 20;
   /* font-size: 50px;
 font-weight: bold; */
   /* color: #ed1e79; */
@@ -158,7 +160,17 @@ color: #ed1e79; */
 
 .hovered>path:last-child{
   stroke: red;
+  stroke-width: 2px;
 }
 .selected>path:last-child{
   stroke: blue;
+  stroke-width: 2px;
+}
+.hoveredEye>path:first-child{
+  stroke: red;
+  stroke-width: 3px;
+}
+.selectedEye>path:first-child{
+  stroke: blue;
+  stroke-width: 3px;
 }
