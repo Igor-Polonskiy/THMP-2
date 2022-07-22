@@ -1,6 +1,6 @@
 (() => {
 
-    
+
     const wrapper = document.querySelector('.doll_1_wrapper');
 
     const divMain = wrapper.querySelector('.doll_1_Main');
@@ -11,20 +11,41 @@
     const insideBox = wrapper.querySelector('.doll_1_insideBox');
     const contentBlocker = 'doll_1_ContentBlocker';
     const well_done = wrapper.querySelector('.doll_1_Well_done');
+    const doll = wrapper.querySelector('#Layer_1')
+    const legs = wrapper.querySelectorAll('.leg')
 
-   
+
     // hide" draggable="true" ondrop="return false"
 
     const elemsdoll_1_ = wrapper.querySelectorAll('.doll_1_item');
     let doll_1_doll_1_;
+    legs.forEach(item => {
+        item.addEventListener('mouseover', (e) => {
+
+            legs.forEach(item => {
+                item.classList.add('hovered')
+            })
+        })
+        item.addEventListener('mouseout', (e) => {
+
+            legs.forEach(item => {
+                item.classList.remove('hovered')
+            })
+        })
+        item.addEventListener('click', (e) => {
+
+            legs.forEach(item => {
+                item.classList.add('selected')
+            })
+        })
+
+    })
 
 
 
 
 
-    insideBox.addEventListener('mouseenter', showOpeningBox);
-    insideBox.addEventListener('mouseleave', fadeOpeningBox);
-    insideBox.addEventListener('click', openBox);
+
 
     soundBtn.addEventListener('click', soundChanger);
     let soundOn = false;
@@ -93,24 +114,9 @@
 
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', () => {
-        for (let i = 0; i < elemsdoll_1_.length; i++) {
-            elemsdoll_1_[i].classList.add("hide");
-            elemsdoll_1_[i].style.position = 'relative ';
-            elemsdoll_1_[i].style.top = '0px';
-            elemsdoll_1_[i].style.left = '0px';
-            insideBox.append(elemsdoll_1_[i]);
-            // itemCounter();
-        }
-        removePointerEventsDraggableElems();
-        insideBox.addEventListener('mouseenter', showOpeningBox);
-        insideBox.addEventListener('mouseleave', fadeOpeningBox);
-        insideBox.addEventListener('click', openBox);
-        fadeOpeningBox();
-
-        if (winOpenBox) {
-            winTextSwitcher();
-            winOpenBox = false;
-        }
+        legs.forEach(item => {
+            item.classList.remove('selected')
+        })
     });
 
 
