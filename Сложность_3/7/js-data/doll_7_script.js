@@ -1,26 +1,103 @@
 (() => {
 
-    
+
     const wrapper = document.querySelector('.doll_7_wrapper');
 
     const divMain = wrapper.querySelector('.doll_7_Main');
     const resetBtn = wrapper.querySelector('.doll_7_ResetBtn');
     const soundBtn = wrapper.querySelector('.doll_7_MuteSound');
     const soundBtfullScreenBtn = wrapper.querySelector('.doll_7_FullScreenBtn');
-    const container = wrapper.querySelector('.container');
+    const container = wrapper.querySelector('.containerdoll_7');
     const insideBox = wrapper.querySelector('.doll_7_insideBox');
     const contentBlocker = 'doll_7_ContentBlocker';
     const well_done = wrapper.querySelector('.doll_7_Well_done');
+    const gameActionWrapper = wrapper.querySelector('.gameAction_wrapper_dall_7');
+    const play_buttonWrapper = wrapper.querySelector('.play_button_wrapper_dall_7');
+    const play_button = wrapper.querySelector('.play_button_doll_7');
 
+
+    const click_sound = document.querySelector('#doll_7_1_mmr');
+    const bantOff_sound = document.querySelector('#doll_7_1_dictor');
+    const dressOff_sound = document.querySelector('#doll_7_2_dictor');
+    const flipping_sound = document.querySelector('#doll_7_2_mmr');
+    const shoesOff_sound = document.querySelector('#doll_7_3_dictor');
+    const win_sound = document.querySelector('#doll_7_3_mmr');
+
+    let win = false;
+    let startAction = false;
+
+    let numberAction = 0;
+    const clothes = [
+        {
+            id: 'bant_doll_7',
+            src: 'Images_1/doll_7_img/bant_doll.png',
+            sound: bantOff_sound
+        },
+        {
+            id: 'dress_doll_7',
+            src: 'Images_1/doll_7_img/dress_wear_doll.png',
+            sound: dressOff_sound
+        },
+        {
+            id: 'shoes_doll_7',
+            src: 'Images_1/doll_7_img/shoes_doll.png',
+            sound: shoesOff_sound
+        }
+    ];
+
+    play_button.addEventListener('click', playHandlerStart, false);
    
-    // hide" draggable="true" ondrop="return false"
+    function playHandlerStart() {
+        playSound(click_sound);
+        startAction = true;
+        play_buttonWrapper.classList.add('doll_7__opacity')
+        setTimeout(() => {
+            // gameActionWrapper.removeChild(play_buttonWrapper);
+            play_buttonWrapper.style.position = 'absolute';
+            play_buttonWrapper.style.pointerEvents = 'none';
 
-   
+            startActionView(clothes[numberAction].src, clothes[numberAction].id, clothes[numberAction].sound);
+        }, 1000);
+        play_button.removeEventListener('click', playHandlerStart, false);
+    }
+    function startActionView(src, id, sound) {
+        changeClothes(src, id, sound);
+        numberAction = numberAction + 1;
+    }
 
+    function changeClothes(clothes, id, sound) {
+        let divWrapper = document.createElement('div');
+        divWrapper.classList.add('clothes_wrapper_doll_7');
+        let imgClothes = document.createElement('img');
+        imgClothes.setAttribute('src', clothes);
+        imgClothes.setAttribute('id', id);
+        imgClothes.classList.add(`clothes_img`);
+        imgClothes.setAttribute('draggable', 'false');
+        divWrapper.appendChild(imgClothes);
+        const theFirstChild = gameActionWrapper.firstChild;
+        gameActionWrapper.insertBefore(divWrapper, theFirstChild);
+        divWrapper.addEventListener('click', playHandlerInAction, false);
+        setTimeout(() => {
+            playSound(sound);
+        }, 500);
+    }
 
+    function playHandlerInAction() {
 
-
-
+        playSound(flipping_sound);
+        const clothes_wrapper = wrapper.querySelector('.clothes_wrapper_doll_7')
+        clothes_wrapper.classList.add('doll_7__opacity')
+        setTimeout(() => {
+            gameActionWrapper.removeChild(gameActionWrapper.firstChild);
+            if (numberAction > 2) {
+                win = true;
+                winTextSwitcher();
+                return;
+            }
+            startActionView(clothes[numberAction].src, clothes[numberAction].id, clothes[numberAction].sound);
+        }, 1000);
+        clothes_wrapper.removeEventListener('click', playHandlerInAction, false);
+    }
 
     soundBtn.addEventListener('click', soundChanger);
     let soundOn = false;
@@ -38,34 +115,21 @@
         soundOn && audio.play();
     }
 
-    
-
-    
-
-    let winOpenBox = false;
-
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', () => {
-        for (let i = 0; i < elemsdoll_7_.length; i++) {
-            elemsdoll_7[i].classList.add("hide");
-            elemsdoll_7[i].style.position = 'relative ';
-            elemsdoll_7[i].style.top = '0px';
-            elemsdoll_7[i].style.left = '0px';
-            insideBox.append(elemsdoll_7_[i]);
-            // itemCounter();
+        if (startAction) {
+            gameActionWrapper.removeChild(gameActionWrapper.firstChild);
+            play_buttonWrapper.classList.remove('doll_7__opacity')
+            play_buttonWrapper.style.position = 'relative';
+            play_buttonWrapper.style.pointerEvents = 'auto';
+            play_button.addEventListener('click', playHandlerStart, false);
+            numberAction = 0;
+            startAction = false;
         }
-        removePointerEventsDraggableElems();
-        insideBox.addEventListener('mouseenter', showOpeningBox);
-        insideBox.addEventListener('mouseleave', fadeOpeningBox);
-        insideBox.addEventListener('click', openBox);
-        fadeOpeningBox();
-
-        if (winOpenBox) {
+        if (win) {
             winTextSwitcher();
-            winOpenBox = false;
         }
     });
-
 
     // Обработчик кнопки "Полный экран"
     soundBtfullScreenBtn.addEventListener('click', function (event) {
@@ -85,210 +149,18 @@
     }, false);
 
 
-
-    function changeStylesAndAppend(dropPlace, draggingElem) {
-        draggingElem.style.position = 'relative ';
-        draggingElem.style.zIndex = null;
-        draggingElem.style.top = null;
-        draggingElem.style.left = null;
-        dropPlace.appendChild(draggingElem);
-    }
-
-
-    let draggingItem;
-    let elemBelow;
-
-
-    function mouseDown(event) {
-        if (event.button !== 0) return;
-        draggingItem = event.target;
-        draggingItem.style.cursor = "url(Images_1/doll_7_img/cursor.png), auto";
-        const elemDraggingBanBorder = divMain; //элемент за границы которого запрещён вылет перетаскиваемой фигуры
-        const elemDraggingStartPlace = insideBox; //элемент первоначального расположения перетаскиваемых фигур (стартовое состояние)
-
-        draggingItem.style.touchAction = 'none'; //ОБЯЗАТЕЛЬНОЕ УСЛОВИЕ(МОЖНО УБРАТЬ И ПРОПИСАТЬ В СТИЛЬ САМОМУ ОБЪЕКТУ) 
-
-
-        let shiftX = event.clientX - draggingItem.getBoundingClientRect().left;
-        let shiftY = event.clientY - draggingItem.getBoundingClientRect().top;
-
-        // ЛИММИТЫ КООРДИНАТ ОГРАНИЧИВАЮЩИЕ ВЫЛЕТ ПЕРЕТАСКИВАЕМОГО ЭЛЕМЕНТА ЗА БЛОК
-        //  (ПО УМОЛЧАНИЮ interact_zadanie - РОДИТЕЛЬ ВАШЕГО БЛОКА)
-        let limits = {
-            top: elemDraggingBanBorder.offsetTop + scrollY,
-            right: elemDraggingBanBorder.offsetWidth + elemDraggingBanBorder.offsetLeft + scrollX,
-            bottom: elemDraggingBanBorder.offsetHeight + elemDraggingBanBorder.offsetTop + scrollY,
-            left: elemDraggingBanBorder.offsetLeft + scrollX
-        };
-
-        draggingItem.style.position = 'absolute';
-        draggingItem.style.zIndex = 1000;
-        document.body.appendChild(draggingItem);
-
-        moveAt(event.pageX, event.pageY);
-
-        function moveAt(pageX, pageY) {
-            draggingItem.style.left = pageX - shiftX + 'px';
-            draggingItem.style.top = pageY - shiftY + 'px';
-        }
-
-        elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-
-        let clickWithoutMove = true;
-
-        function onMouseMove(event) {
-            let newLocation = {
-                x: limits.left,
-                y: limits.top
-            };
-            if (event.pageX > limits.right) {
-                newLocation.x = limits.right;
-            } else if (event.pageX > limits.left) {
-                newLocation.x = event.pageX;
-            }
-            if (event.pageY > limits.bottom) {
-                newLocation.y = limits.bottom;
-            } else if (event.pageY > limits.top) {
-                newLocation.y = event.pageY;
-            }
-
-            clickWithoutMove = false
-            moveAt(newLocation.x, newLocation.y);
-            // moveAt(event.pageX, event.pageY);
-
-            if (!event.path.includes(draggingItem)) {
-                window.addEventListener('pointerup', moveOut);
-            }
-            if (event.path.includes(draggingItem)) {
-                window.removeEventListener('pointerup', moveOut);
-            }
-
-            draggingItem.hidden = true;
-            elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-            draggingItem.hidden = false;
-
-            if (!elemBelow) return;
-
-            // ОБРАБОТКА СОБЫТИЯ НАХОЖДЕНИЯ НАД БЛОКОМ И ВЫЛЕТА ИЗ НЕГО (ПО НЕОБХОДИМИОСТИ)
-
-            // let currentDroppable = null;
-
-            // let droppableBelow = elemBelow.closest('.droppable'); // БЕРЁМ НУЖНЫЙ БЛОК 
-
-            // if (currentDroppable != droppableBelow) {
-            //     if (currentDroppable) { 
-            // ЛОГИКА ОБРАБОТКИ ПРОЦЕССА "ВЫЛЕТА" ИЗ DROPPABLE
-            //         leaveDroppable(currentDroppable);
-            //     }
-            //     currentDroppable = droppableBelow;
-            // ЛОГИКА ОБРАБОТКИ ПРОЦЕССА, КОГДА МЫ "ВЛЕТАЕМ" В ЭЛЕМЕНТ
-            //     if (currentDroppable) {
-            //         enterDroppable(currentDroppable);
-            //     }
-            // }
-        }
-
-        // КОГДА НАД ВЫБРАННЫМ БЛОКОМ
-        function enterDroppable(currentDroppable) {
-            // currentDroppable
-        }
-        // КОДА ВЫЛЕТЕЛИ ИЗ БЛОКА
-        function leaveDroppable(currentDroppable) {
-            // currentDroppable
-        }
-        document.addEventListener('pointermove', onMouseMove);
-
-
-        // КОГДА ВО ВРЕМЯ ПЕРЕТАСКИВАНИЯ КУРСОР ВЫНЕСЛИ ЗА ПРЕДЕЛЫ ОКНА БРАУЗЕРА И ОТПУСТИЛИ ЗАХВАТ ЭЛЕМЕНТА
-        function moveOut(e) {
-            smoothTransition(draggingItem)
-            setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 1000)
-
-            window.removeEventListener('pointerup', moveOut);
-            document.removeEventListener('pointermove', onMouseMove);
-        }
-
-        // КОГДА КУРСОР В ЗОНЕ ДЛЯ ПЕРЕТАСКИВАНИЙ И ПОЛЬЗОВАТЕЛЬ ОТПУСТИЛ ЗАХВАТ ЭЛЕМЕНТА
-        draggingItem.onpointerup = function (e) {
-            startAction = true;
-            if (clickWithoutMove) {
-                smoothTransition(draggingItem)
-                setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 10000)
-
-            }
-
-            document.removeEventListener('pointermove', onMouseMove);
-
-            // ЛОГИКА ОБРАБОТКИ ПОПАДАНИЯ НА НУЖНЫЙ БЛОК И НАОБОРОТ
-            if (elemBelow.classList.contains('doll_7_Main')) {
-                let new_shiftX = (e.clientX - elemBelow.getBoundingClientRect().left) - shiftX - 40 + 'px';
-                let new_shiftY = (e.clientY - elemBelow.getBoundingClientRect().top) - shiftY - 40 + 'px';
-                draggingItem.style.left = new_shiftX;
-                draggingItem.style.top = new_shiftY;
-                elemBelow.appendChild(draggingItem);
-                winFigursCounter();
-            } else {
-                smoothTransition(draggingItem)
-                setTimeout(() => changeStylesAndAppend(insideBox, draggingItem), 1000)
-
-            }
-
-            //winFigursCounter();
-
-        };
-
-        function smoothTransition(draggingElem) {
-            // document.body.style.pointerEvents = 'none'
-            elemsdoll_7_.forEach((e) => {
-                e.removeEventListener('pointerdown', mouseDown);
-            });
-            let coordX,
-                coordY
-            draggingElem.classList.add('dragTransition')
-            coordX = elemDraggingStartPlace.getBoundingClientRect().left + elemDraggingStartPlace.getBoundingClientRect().width / 2
-            coordY = elemDraggingStartPlace.getBoundingClientRect().top + elemDraggingStartPlace.getBoundingClientRect().height / 2 + window.pageYOffset
-            draggingElem.style.left = `${coordX}px`
-            draggingElem.style.top = `${coordY}px`
-            setTimeout(() => {
-                draggingElem.classList.remove('dragTransition')
-                // document.body.style.pointerEvents = 'auto'
-                elemsdoll_7_.forEach((e) => {
-                    e.addEventListener('pointerdown', mouseDown);
-                });
-
-            }, 1000)
-        }
-
-
-    };
-
-
-
-
-    function winFigursCounter() {
-        if (insideBox.getElementsByTagName('img').length == 0) {
-            winOpenBox = true;
-            winTextSwitcher();
-            elemsdoll_7_.forEach((e) => {
-                e.style.pointerEvents = 'none';
-            });
-
-        }
-    };
-
-    
-
     function winTextSwitcher() {
 
         if (!well_done.classList.contains('onViewdoll_7')) {
             // well_done.classList.remove('hide');
             well_done.classList.add('onViewdoll_7');
-            soundOn && playSound(winSound);
+            soundOn && playSound(win_sound);
 
         } else if (well_done.classList.contains('onViewdoll_7')) {
+            win = false;
             // well_done.classList.add('hide');
             well_done.classList.remove('onViewdoll_7');
         }
-
+        
     };
 })();
