@@ -54,7 +54,7 @@ html {
     z-index: 3;
     width: 80%;
     position: relative;
-    height: 630px;
+    height: 550px;
     border-top: 40px solid #2eb4ff;
     border-left: 40px solid #2eb4ff;
     border-right: 40px solid #2eb4ff;
@@ -67,11 +67,12 @@ html {
   .doll_2_SliderWrapper {
     overflow: hidden;
     width: 81%;
-    height: 300px;
+    height: 280px;
     border: 30px solid #fcee21;
     border-radius: 40px;
     background-color: white;
     display: flex;
+    justify-content: center;
     flex-direction: row;
   }
   .doll_2_Set {
@@ -111,24 +112,7 @@ html {
       url(../assets/plus.cur), auto 
   } */
   
-  #parallelepiped_yellowdoll_2 {
-    height: 160px;
-    margin: 10px;
-  }
   
-  #cube_bluedoll_2 {
-    height: 250px;
-    margin: 10px;
-  }
-  
-  #roof_reddoll_2 {
-    height: 190px;
-    margin: 10px;
-  }
-  .itemdoll_2 {
-    transform: scale(1);
-    transition: transform 1s ease;
-  }
   .scaleBigdoll_2 {
     transform: scale(1.5);
     transition: transform 1s ease;
@@ -172,65 +156,7 @@ html {
     display: none;
   }
   
-  .house {
-    opacity: 1;
-    -webkit-transition: opacity 3s;
-    -moz-transition: opacity 3s;
-    transition: opacity 3s;
-    margin-bottom: 3%;
-    width: 60%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
   
-  .roof {
-    margin: 10px;
-    z-index: 13;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 30%;
-    width: inherit;
-    background-color: transparent;
-  }
-  .facade {
-    margin: -26px;
-    z-index: 12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30%;
-    width: inherit;
-    background-color: transparent;
-  }
-  .basement {
-    z-index: 11;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 30%;
-  
-    width: inherit;
-    background-color: transparent;
-  }
-  
-  .houseElementsShadowRed {
-    box-shadow: 0px 15px 10px -15px #d31b1c;
-    border-radius: 40px;
-  }
-  
-  .houseElementsShadowYellow {
-    box-shadow: 0px 15px 10px -15px #f7d736;
-    border-radius: 40px;
-  }
-  
-  .houseElementsShadowBlue {
-    box-shadow: 0px 15px 10px -15px #2054a1;
-    border-radius: 40px;
-  }
   
   .doll_2_Well_done {
     position: absolute;
@@ -252,24 +178,7 @@ html {
   .doll_2_Fade {
     opacity: 0;
   }
-  
-  .winHousePicture {
-    position: absolute;
-    margin: 0 0 25px 130px;
-    opacity: 0;
-  }
-  
-  .edgingHouse {
-    position: absolute;
-    margin: 0 auto;
-    opacity: 1;
-  }
-  .winHousePictureShow {
-    opacity: 1;
-    -webkit-transition: opacity 3s;
-    -moz-transition: opacity 3s;
-    transition: opacity 3s;
-  }
+ 
   
   .fadedoll_2 {
     opacity: 0;
@@ -285,4 +194,20 @@ html {
   }
   .dragTransition {
     transition: all 1s;
+  }
+  #doll_2{
+    height: 250px;
+  }
+  .doll_2_sleeping{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+  }
+  .doll_2_sleeping>img{
+    height: 400px;
+  }
+  .doll_2_eyes{
+    display: none;
   }
