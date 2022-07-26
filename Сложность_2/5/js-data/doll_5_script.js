@@ -5,7 +5,6 @@
   const resetBtn = wrapper.querySelector(".doll_5_ResetBtn");
   const soundBtn = wrapper.querySelector(".doll_5_MuteSound");
   const soundBtfullScreenBtn = wrapper.querySelector(".doll_5_FullScreenBtn");
-  const container = wrapper.querySelector(".container");
 
   const contentBlocker = "doll_5_ContentBlocker";
   const well_done = wrapper.querySelector(".doll_5_Well_done");
@@ -19,8 +18,7 @@
   const winSound = wrapper.querySelector("#doll_5_2_mmr");
 
   let soundOn = false;
-  let winOpenBox = false;
-  console.log("🚀 ~ file: doll_5_script.js ~ line 33 ~ winOpenBox", winOpenBox);
+
   let currentSound;
   const dollActions = [
     {
@@ -33,7 +31,7 @@
       id: 2,
       name: "doll-sitting",
       src: "Images_1/doll_5_img/doll-sitting.png",
-      //   gifSrc: "Images_1/doll_5_img/doll-sitting.gif",
+
       gifSrc: "",
     },
     {
@@ -52,23 +50,13 @@
   const redBtnSrc = "Images_1/doll_5_img/red-button.jpg";
 
   divMain.insertAdjacentHTML("beforeend", createMarkup(dollActions));
-  //   console.log(
-  //     "🚀 ~ file: doll_5_script.js ~ line 63 ~ divMain",
-  //     divMain.children
-  //   );
+
   const redBtn = wrapper.querySelectorAll(".doll_5_red-button");
   const allActionsBlocks = wrapper.querySelectorAll(".doll_5_action");
-  //   console.log(
-  //     "🚀 ~ file: doll_5_script.js ~ line 69 ~ allActionsBlocks",
-  //     allActionsBlocks
-  //   );
   const allImages = wrapper.querySelectorAll(".doll_5_image");
-  //   console.log("🚀 ~ file: doll_5_script.js ~ line 65 ~ allImages", allImages);
 
   soundBtn.addEventListener("click", soundChanger);
   redBtn.forEach((el) => el.addEventListener("click", onRedBtnClick));
-  //   allActionsBlocks.forEach((el) => el.addEventListener("click", imageChanger));
-  //   allActionsBlocks.forEach((el) => el.addEventListener("click", imageChanger));
   allImages.forEach((el) => el.addEventListener("click", imageChanger));
 
   function onRedBtnClick(e) {
@@ -103,16 +91,8 @@
 
         currentSound.addEventListener("ended", () => {
           e.target.parentElement.classList.add("hide");
-          // winOpenBox = true;
-          // console.log(
-          //   "🚀 ~ file: doll_5_script.js ~ line 107 ~ currentSound.addEventListener ~ winOpenBox",
-          //   winOpenBox
-          // );
-          // if (winOpenBox) {
+
           winTextSwitcher();
-          // winOpenBox = false;
-          // }
-          // winTextSwitcher();
         });
         break;
 
@@ -122,22 +102,13 @@
   }
 
   function changeImgToGif(e, id) {
-    // const findedImage = dollActions.find((el) => el.id === Number(id));
     const findedImage = findImage(id);
-    // console.dir(e.target.previousElementSibling);
-    // console.log(
-    //   e.target.previousElementSibling.style.backgroundImage.includes(".png")
-    // );
+
     if (
-      // e.target.previousElementSibling.src.indexOf(".png") > 0 &&
       e.target.previousElementSibling.style.backgroundImage.includes(".png") &&
       findedImage.gifSrc
     ) {
-      // e.target.previousElementSibling.src = findedImage.gifSrc;
-      // e.target.previousElementSibling.style.backgroundImage = `url(
-      //   ${findedImage.gifSrc})`;
       setBackground(e.target.previousElementSibling, findedImage.gifSrc);
-      // setBackground(e.target.previousElementSibling, findedImage.gifSrc, id);
     }
   }
 
@@ -154,34 +125,20 @@
   }
 
   function setBackground(target, url) {
-    // function setBackground(target, id) {
-    // const findedImage = dollActions.find((el) => el.id === Number(id));
     target.style.backgroundImage = `url(
         ${url})`;
-    //   target.style.backgroundImage = `url(
-    //       ${findedImage})`;
   }
   function imageChanger(e) {
     if (Number(e.target.parentElement.dataset.id) <= 3) {
-      // if (Number(e.target.parentElement.dataset.id) < 3) {
       e.target.parentElement.classList.add("visually-hidden");
       allActionsBlocks[
         Number(e.target.parentElement.dataset.id)
       ].classList.remove("visually-hidden");
+
       const findedImage = findImage(e.target.parentElement.dataset.id);
-      // const findedImageSrc = dollActions.find(
-      //   (el) => el.id === Number(e.target.parentElement.dataset.id)
-      // ).src;
-      // console.log(
-      //   "🚀 ~ file: doll_5_script.js ~ line 150 ~ imageChanger ~ findedImageSrc",
-      //   findedImageSrc
-      // );
+
       setBackground(e.target, findedImage.src);
-      // e.target.style.backgroundImage = `url(
-      //   ${findedImageSrc})`;
-      // e.target.src = dollActions.find(
-      //   (el) => el.id === Number(e.target.parentElement.dataset.id)
-      // ).src;
+
       resetSound(currentSound);
       currentSound = flippingSound;
       playSound(currentSound);
@@ -204,24 +161,13 @@
   function createMarkup(pictures) {
     return pictures
       .map((picture, index) => {
-        // const isVisible = index === 0 ? "" : "hide";
         const isVisible = index === 0 ? "" : "visually-hidden";
-        // <img src=${picture.src} alt=${picture.name} class='doll-image'/>
-        // <img src=${picture.gifSrc} alt=${picture.name} class='doll-image'/>
-        // onclick="this.src = (this.src.indexOf ('.png') > 0) ? '${picture.gifSrc}' : '${picture.src}'"
-        // onclick=${toggleImgToGif()}
-        // <div class='doll_5_imageBox'>
-        // </div>
-        // <img src=${picture.src}
-        //      alt=${picture.name}
-        //      data-id=${picture.id}
-        //      class='doll_5_image'/>
+
         return `<div class="doll_5_action ${isVisible}" data-id=${picture.id}>
                       <div style="background-image:url(${picture.src})" data-id=${picture.id} class='doll_5_image'></div>
-                             <div id=${picture.id} style="background-image:url(${redBtnSrc})" class="doll_5_red-button"></div>
-                             </div>
-                             `;
-        // <img id=${picture.id} src=${redBtnSrc} alt='red_button' class="doll_5_red-button"/>
+                      <div id=${picture.id} style="background-image:url(${redBtnSrc})" class="doll_5_red-button"></div>
+                </div>
+                `;
       })
       .join("");
   }
@@ -234,14 +180,7 @@
       } else if (index === allActionsBlocks.length - 1) {
         el.classList.remove("hide");
         el.classList.add("visually-hidden");
-        // winTextSwitcher();
 
-        // el.firstElementChild.src = dollActions.find(
-        //   (elem) => elem.id === Number(el.dataset.id)
-        // ).src; !!!!
-        // const findedImage = dollActions.find(
-        //   (elem) => elem.id === Number(el.dataset.id)
-        // );
         const findedImage = findImage(el.dataset.id);
         setBackground(el.firstElementChild, findedImage.src);
       } else {
@@ -250,21 +189,6 @@
     });
     resetSound(currentSound);
     well_done.classList.remove("onViewdoll_5");
-
-    // if (winOpenBox) {
-    //   console.log(
-    //     "🚀 ~ file: doll_5_script.js ~ line 252 ~ resetBtn.addEventListener ~ winOpenBox",
-    //     winOpenBox
-    //   );
-
-    // winTextSwitcher();
-    // winOpenBox = false;
-    // }
-    // winOpenBox = false;
-    // console.log(
-    //   "🚀 ~ file: doll_5_script.js ~ line 286 ~ resetBtn.addEventListener ~ winOpenBox",
-    //   winOpenBox
-    // );
   });
 
   // Обработчик кнопки "Полный экран"
@@ -289,28 +213,9 @@
   );
 
   function winTextSwitcher() {
-    console.log("well_done", well_done);
-    // if (!well_done.classList.contains("hideSmiledoll_5")) {
-    //   // well_done.classList.remove('hide');
-    //   well_done.classList.add("hideSmiledoll_5");
-    //   soundOn && playSound(winSound);
-    // } else if (well_done.classList.contains("hideSmiledoll_5")) {
-    //   // well_done.classList.add('hide');
-    //   console.log(789);
-    //   well_done.classList.remove("hideSmiledoll_5");
-    //   console.log(123);
-    // }
     if (!well_done.classList.contains("onViewdoll_5")) {
-      // well_done.classList.remove('hide');
-      // console.log(123);
       well_done.classList.add("onViewdoll_5");
       soundOn && playSound(winSound);
-      // console.log("1", winOpenBox);
-      // } else if (well_done.classList.contains("onViewdoll_5")) {
-      //   // console.log(456);
-      //   console.log("2", winOpenBox);
-      //   // well_done.classList.add('hide');
-      //   well_done.classList.remove("onViewdoll_5");
     }
   }
 })();
