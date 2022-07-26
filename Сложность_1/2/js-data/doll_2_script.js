@@ -6,17 +6,20 @@
     const wrapper = document.querySelector('.doll_2_Wrapper');
 
     const soundBtn = wrapper.querySelector('.doll_2_MuteSound');
-    const divSet = wrapper.querySelector('.doll_2_Set');
+    const divSet = wrapper.querySelector('.doll_2_SliderWrapper');
     // const counter = wrapper.querySelector('.itemCount');
     const container = wrapper.querySelector('.doll_2_Container');
     const sliderwrapper = wrapper.querySelector('.doll_2_SliderWrapper');
     const resetBtn = wrapper.querySelector('.doll_2_ResetBtn');
     const house = wrapper.querySelector('.house');
-    const winHousePicture = wrapper.querySelector('.winHousePicture');
     const fullScreenBtn = wrapper.querySelector('.doll_2_FullScreenBtn');
-    const winSound = document.getElementById('winSound');
     const feedBackdoll_2_ = wrapper.querySelector('.smiledoll_2');
-
+    const bed = wrapper.querySelector('.doll_2_bed')
+    const doll = wrapper.querySelector('.doll_2_doll')
+    const soundTake = document.querySelector('#doll_2_1_mmr')
+    const soundPut = document.querySelector('#doll_2_2_mmr')
+    const soundSong = document.querySelector('#doll_2_3_mmr')
+    const well_done = wrapper.querySelector('.doll_2_Well_done')
 
 
     // Собирается элементы в переменные, создаются вспомогательные переменные
@@ -27,7 +30,10 @@
     resetBtn.addEventListener('click', reset);
 
     function reset() {
-        console.log('reset')
+        bed.src = 'Images_1/doll_2_img/bed.jpg'
+        draggingItem.classList.remove('hide')
+        well_done.classList.remove('onViewdoll_2');
+
     }
     // Обработчик кнопки "Полный экран"
 
@@ -69,17 +75,26 @@
         draggingElem.style.zIndex = null;
         draggingElem.style.top = null;
         draggingElem.style.left = null;
-        dropPlace.appendChild(draggingElem);
+        dropPlace.append(draggingElem);
     }
 
-   
+    doll.addEventListener('pointerdown', mouseDown)
+
 
     let draggingItem;
     let elemBelow;
+    function bedShake(e){
+        bed.src = 'Images_1/doll_2_img/doll-sleeping.gif'
+        playSound(soundSong)
+        bed.removeEventListener('pointerdown' , bedShake)
+        well_done.classList.add('onViewdoll_2');
+    }
 
     function mouseDown(event) {
+        event.stopPropagation()
+        playSound(soundTake)
         if (event.button !== 0) return;
-        draggingItem = event.target;
+        draggingItem = doll;
         draggingItem.style.cursor = "url(Images_1/doll_2_img/cursor.png), auto";
         const elemDraggingBanBorder = container;//элемент за границы которого запрещён вылет перетаскиваемой фигуры
         const elemDraggingStartPlace = divSet;  //элемент первоначального расположения перетаскиваемых фигур (стартовое состояние)
@@ -163,15 +178,8 @@
             }
         }
 
-        // КОГДА НАД ВЫБРАННЫМ БЛОКОМ
-        function enterDroppable(currentDroppable) {
-            currentDroppable.classList.add('houseElementsShadowRed');
-        }
-        // КОДА ВЫЛЕТЕЛИ ИЗ БЛОКА
-        function leaveDroppable(currentDroppable) {
-            currentDroppable.classList.remove('houseElementsShadowRed');
 
-        }
+
         document.addEventListener('pointermove', onMouseMove);
 
 
@@ -197,12 +205,12 @@
             document.removeEventListener('pointermove', onMouseMove);
 
             // ЛОГИКА ОБРАБОТКИ ПОПАДАНИЯ НА НУЖНЫЙ БЛОК И НАОБОРОТ
-            if (elemBelow.classList.contains('houseElement')) {
-                changeStylesAndAppend(elemBelow, draggingItem);
-                house.childNodes.forEach(item => {
-                    item.classList?.remove('houseElementsShadowRed');
-                });
-                houseGameResult();
+            if (elemBelow.classList.contains('doll_2_bed')) {
+                draggingItem.classList.add('hide')
+                changeStylesAndAppend(elemDraggingStartPlace, draggingItem);
+                bed.src = 'Images_1/doll_2_img/doll-sleeping-cover.png'
+                playSound(soundPut)
+                bed.addEventListener('pointerdown' , bedShake)
             } else {
                 smoothTransition(draggingItem)
                 setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 1000)
@@ -213,22 +221,21 @@
 
         function smoothTransition(draggingElem) {
             //document.body.style.pointerEvents = 'none'
-            elemsdoll_2_.forEach((e) => {
-                e.removeEventListener('pointerdown', mouseDown);
-            });
+            doll.removeEventListener('pointerdown', mouseDown);
+
             let coordX,
                 coordY
             draggingElem.classList.add('dragTransition')
-            coordX = elemDraggingStartPlace.getBoundingClientRect().left + elemDraggingStartPlace.getBoundingClientRect().width
-            coordY = elemDraggingStartPlace.getBoundingClientRect().top + window.pageYOffset
+            coordX = elemDraggingStartPlace.getBoundingClientRect().left + elemDraggingStartPlace.getBoundingClientRect().width / 2 - doll.getBoundingClientRect().width / 2
+            coordY = elemDraggingStartPlace.getBoundingClientRect().top + window.pageYOffset + 30
             draggingElem.style.left = `${coordX}px`
             draggingElem.style.top = `${coordY}px`
             setTimeout(() => {
                 draggingElem.classList.remove('dragTransition')
                 //document.body.style.pointerEvents = 'auto'
-                elemsdoll_2_.forEach((e) => {
-                    e.addEventListener('pointerdown', mouseDown);
-                });
+
+                doll.addEventListener('pointerdown', mouseDown);
+
 
             }, 1000)
         }
@@ -242,7 +249,7 @@
 
     // обработка положительного или отрицательного результата сбора домика
 
-   
+
 
 
 
