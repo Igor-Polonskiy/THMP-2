@@ -211,3 +211,6 @@ html {
   .doll_2_eyes{
     display: none;
   }
+  .doll_2_doll>svg{
+    z-index: -1;
+  }

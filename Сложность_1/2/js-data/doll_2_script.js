@@ -6,17 +6,16 @@
     const wrapper = document.querySelector('.doll_2_Wrapper');
 
     const soundBtn = wrapper.querySelector('.doll_2_MuteSound');
-    const divSet = wrapper.querySelector('.doll_2_Set');
+    const divSet = wrapper.querySelector('.doll_2_SliderWrapper');
     // const counter = wrapper.querySelector('.itemCount');
     const container = wrapper.querySelector('.doll_2_Container');
     const sliderwrapper = wrapper.querySelector('.doll_2_SliderWrapper');
     const resetBtn = wrapper.querySelector('.doll_2_ResetBtn');
     const house = wrapper.querySelector('.house');
-    const winHousePicture = wrapper.querySelector('.winHousePicture');
     const fullScreenBtn = wrapper.querySelector('.doll_2_FullScreenBtn');
-    const winSound = document.getElementById('winSound');
     const feedBackdoll_2_ = wrapper.querySelector('.smiledoll_2');
-
+    const bed = wrapper.querySelector('.doll_2_bed')
+ const doll = wrapper.querySelector('.doll_2_doll')
 
 
     // Собирается элементы в переменные, создаются вспомогательные переменные
@@ -72,12 +71,14 @@
         dropPlace.appendChild(draggingElem);
     }
 
+    doll.addEventListener('pointerdown', mouseDown)
    
-
+ 
     let draggingItem;
     let elemBelow;
 
     function mouseDown(event) {
+        event.stopPropagation()
         if (event.button !== 0) return;
         draggingItem = event.target;
         draggingItem.style.cursor = "url(Images_1/doll_2_img/cursor.png), auto";
@@ -213,9 +214,9 @@
 
         function smoothTransition(draggingElem) {
             //document.body.style.pointerEvents = 'none'
-            elemsdoll_2_.forEach((e) => {
-                e.removeEventListener('pointerdown', mouseDown);
-            });
+            
+                doll.removeEventListener('pointerdown', mouseDown);
+            
             let coordX,
                 coordY
             draggingElem.classList.add('dragTransition')
@@ -226,9 +227,9 @@
             setTimeout(() => {
                 draggingElem.classList.remove('dragTransition')
                 //document.body.style.pointerEvents = 'auto'
-                elemsdoll_2_.forEach((e) => {
-                    e.addEventListener('pointerdown', mouseDown);
-                });
+                
+                    doll.addEventListener('pointerdown', mouseDown);
+                
 
             }, 1000)
         }
