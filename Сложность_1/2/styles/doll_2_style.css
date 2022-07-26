@@ -214,3 +214,8 @@ html {
   .doll_2_doll>svg{
     z-index: -1;
   }
+  .hide {
+    opacity: 0;
+    transition: all 1s ease;
+    pointer-events: none;
+  }
