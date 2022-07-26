@@ -38,12 +38,14 @@
             })
         })
         item.addEventListener('click', (e) => {
-            legs.forEach(item => {
-                item.classList.add('selected')
-            })
+            if (!item.classList.contains('selected')) {
+                legs.forEach(item => {
+                    item.classList.add('selected')
+                })
+                win++
+                setTimeout(() => winCheker(), 1500)
+            }
             playSound(soundLegs)
-            win++
-            setTimeout(()=>winCheker(),1500)
         })
     })
 
@@ -64,17 +66,19 @@
             })
         })
         item.addEventListener('click', (e) => {
-            hands.forEach(item => {
-                item.classList.add('selected')
-            })
+            if (!item.classList.contains('selected')) {
+                hands.forEach(item => {
+                    item.classList.add('selected')
+                })
+                win++
+                setTimeout(() => winCheker(), 1500)
+            }
             playSound(soundHands)
-            win++
-            setTimeout(()=>winCheker(),1500)
         })
     })
 
     eyes.forEach(item => {
-         item.addEventListener('mouseover', (e) => {
+        item.addEventListener('mouseover', (e) => {
             eyes.forEach(item => {
                 item.classList.add('hoveredEye')
             })
@@ -91,12 +95,15 @@
             })
         })
         item.addEventListener('click', (e) => {
-            eyes.forEach(item => {
-                item.classList.add('selectedEye')
-            })
+            if (!item.classList.contains('selectedEye')) {
+
+                eyes.forEach(item => {
+                    item.classList.add('selectedEye')
+                })
+                win++
+                setTimeout(() => winCheker(), 1500)
+            }
             playSound(soundEyes)
-            win++
-            setTimeout(()=>winCheker(),1500)
         })
 
     })
