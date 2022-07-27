@@ -2,176 +2,193 @@
   margin: 0;
   padding: 0;
   user-select: none;
-   z-index: 0; 
+   z-index: 0;
 } */
 
-/* body,
 html {
   background: url(../Images_1/doll_9_img/background.jpg) center no-repeat;
   width: 100%;
   height: 100%;
   position: relative;
   overflow-x: hidden;
-} */
+}
 
 .doll_9_Content-blocker {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(136, 136, 204, 0.5);
-    z-index: 500;
-  }
-  
-  .doll_9_Wrapper {
-    user-select: none;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    min-width: 100%;
-    min-height: 100%;
-    cursor: url(../Images_1/doll_9_img/cursor.png), auto;
-  }
-  
-  .doll_9_Container {
-    margin-bottom: calc(20px + 1%);
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    /* height: 100%; */
-  }
-  
-  .doll_9_Main {
-    box-shadow: inset 0 66px 73px -30px #333;
-    /* background: url(../assets/cartoon_back.jpg) center no-repeat; */
-    background-color: white;
-    background-size: cover;
-    box-sizing: border-box;
-    z-index: 3;
-    width: 80%;
-    position: relative;
-    height: 630px;
-    border-top: 40px solid #2eb4ff;
-    border-left: 40px solid #2eb4ff;
-    border-right: 40px solid #2eb4ff;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-  .doll_9_SliderWrapper {
-    overflow: hidden;
-    width: 81%;
-    height: 300px;
-    border: 30px solid #fcee21;
-    border-radius: 40px;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-  }
-  .doll_9_Set {
-    left: 0;
-    position: relative;
-    background-color: white;
-    z-index: 4;
-    box-sizing: border-box;
-    padding: 2% 3%;
-    /* width: 100%; */
-    height: 300px;
-    /* border: 2px solid black;
-      border-radius: 30px; */
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    transition: all ease 0.5s;
-  }
-  
-  .doll_9_Set:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-  /* 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(136, 136, 204, 0.5);
+  z-index: 500;
+}
+
+.doll_9_Wrapper {
+  user-select: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100%;
+  cursor: url(../Images_1/doll_9_img/cursor.png), auto;
+}
+
+.doll_9_Container {
+  margin-bottom: calc(20px + 1%);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* height: 100%; */
+}
+
+.doll_9_Main {
+  box-shadow: inset 0 66px 73px -30px #333;
+  /* background: url(../assets/cartoon_back.jpg) center no-repeat; */
+  background-color: white;
+  background-size: cover;
+  box-sizing: border-box;
+  z-index: 3;
+  width: 80%;
+  position: relative;
+  height: 900px;
+  border: 40px solid #2eb4ff;
+  border-radius: 30px;
+
+  /* border-top: 40px solid #2eb4ff;
+  border-left: 40px solid #2eb4ff;
+  border-right: 40px solid #2eb4ff; */
+  /* border-top-left-radius: 30px;
+  border-top-right-radius: 30px; */
+  display: flex;
+  /* justify-content: center; */
+  justify-content: space-around;
+  /* align-items: flex-end; */
+}
+.doll_9_SliderWrapper {
+  overflow: hidden;
+  /* width: 81%; */
+  width: 50%;
+  height: 100%;
+  /* height: 300px; */
+  /* border: 30px solid #fcee21; */
+  border-radius: 40px;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.doll_9_DropWrapper {
+  /* position: absolute; */
+  margin: 0 0 25px 130px;
+  width: 50%;
+  height: 100%;
+}
+/* .doll_9_Set {
+  left: 0;
+  position: relative;
+  background-color: white;
+  z-index: 4;
+  box-sizing: border-box;
+  padding: 2% 3%;
+  width: 100%;
+  height: 300px;
+  border: 2px solid black;
+      border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all ease 0.5s;
+} */
+
+/* .doll_9_Set:after {
+  content: "";
+  display: block;
+  clear: both;
+} */
+/*
   .block:not(:last-child) {
       margin: 30px 0;
   } */
-  
-  /* .item {
+
+/* .item {
       height: 160px;
       margin: 10px;
       cursor: grab;
       background: transparent;
-  
-      url(../assets/plus.cur), auto 
+
+      url(../assets/plus.cur), auto
   } */
-  
-  #parallelepiped_yellowdoll_9 {
+
+/* #parallelepiped_yellowdoll_9 {
     height: 160px;
     margin: 10px;
   }
-  
+
   #cube_bluedoll_9 {
     height: 250px;
     margin: 10px;
   }
-  
+
   #roof_reddoll_9 {
     height: 190px;
     margin: 10px;
-  }
-  .itemdoll_9 {
-    transform: scale(1);
-    transition: transform 1s ease;
-  }
-  .scaleBigdoll_9 {
-    transform: scale(1.5);
-    transition: transform 1s ease;
-  }
-  
-  /* .item:first-child {
+  } */
+.itemdoll_9 {
+  transform: scale(1);
+  transition: transform 1s ease;
+}
+.scaleBigdoll_9 {
+  transform: scale(1.5);
+  transition: transform 1s ease;
+}
+
+/* .item:first-child {
       margin-left: 50px
   } */
-  
-  .doll_9_FullScreenBtn {
-    position: absolute;
-    margin: 40px 0 0 78%;
-    z-index: 5;
-    background-color: #ed1e79;
-    border-radius: 30%;
-    cursor: url(../Images_1/doll_9_img/cursor.png), auto;
-  }
-  .doll_9_MuteSound {
-    position: absolute;
-    margin: 242px 0 0 78%;
-    z-index: 5;
-    background-color: #ed1e79;
-    border-radius: 30%;
-    cursor: url(../Images_1/doll_9_img/cursor.png), auto;
-    /* cursor: url(../Images_1/doll_9_img/cursor.png), auto; */
-  }
-  
-  .doll_9_ResetBtn {
-    box-sizing: border-box;
-  
-    padding: 12px;
-    position: absolute;
-    margin: 140px 0 0 78%;
-    z-index: 5;
-    background-color: #ed1e79;
-    border-radius: 30%;
-    cursor: url(../Images_1/doll_9_img/cursor.png), auto;
-  }
-  
-  .hide {
-    display: none;
-  }
-  
+
+.doll_9_FullScreenBtn {
+  position: absolute;
+  margin: 40px 0 0 78%;
+  z-index: 5;
+  background-color: #ed1e79;
+  border-radius: 30%;
+  cursor: url(../Images_1/doll_9_img/cursor.png), auto;
+}
+.doll_9_MuteSound {
+  position: absolute;
+  margin: 242px 0 0 78%;
+  z-index: 5;
+  background-color: #ed1e79;
+  border-radius: 30%;
+  cursor: url(../Images_1/doll_9_img/cursor.png), auto;
+  /* cursor: url(../Images_1/doll_9_img/cursor.png), auto; */
+}
+
+.doll_9_ResetBtn {
+  box-sizing: border-box;
+
+  padding: 12px;
+  position: absolute;
+  margin: 140px 0 0 78%;
+  z-index: 5;
+  background-color: #ed1e79;
+  border-radius: 30%;
+  cursor: url(../Images_1/doll_9_img/cursor.png), auto;
+}
+
+.hide {
+  /* display: none; */
+  opacity: 0;
+}
+/*
   .house {
     opacity: 1;
     -webkit-transition: opacity 3s;
@@ -185,7 +202,7 @@ html {
     align-items: center;
     justify-content: center;
   }
-  
+
   .roof {
     margin: 10px;
     z-index: 13;
@@ -212,77 +229,96 @@ html {
     justify-content: center;
     align-items: flex-start;
     height: 30%;
-  
+
     width: inherit;
     background-color: transparent;
   }
-  
+
   .houseElementsShadowRed {
     box-shadow: 0px 15px 10px -15px #d31b1c;
     border-radius: 40px;
   }
-  
+
   .houseElementsShadowYellow {
     box-shadow: 0px 15px 10px -15px #f7d736;
     border-radius: 40px;
   }
-  
+
   .houseElementsShadowBlue {
     box-shadow: 0px 15px 10px -15px #2054a1;
     border-radius: 40px;
   }
-  
-  .doll_9_Well_done {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-  
-    left: 0;
-    right: 0;
-    text-align: center;
-    height: 100px;
-    /* bottom: 14px;
+   */
+
+.doll_9_clothes {
+  width: 300px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.doll_9_clothes_bow {
+  width: 300px;
+  height: 300px;
+}
+.doll_9_clothes_dress {
+  width: 300px;
+  height: 300px;
+}
+.doll_9_clothes_sandals {
+  width: 250px;
+  height: 180px;
+}
+.doll_9_Well_done {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: 100px;
+  /* bottom: 14px;
     left: 652px; */
-  }
-  
-  .smiledoll_9 {
-    height: 300px;
-  }
-  
-  .doll_9_Fade {
-    opacity: 0;
-  }
-  
-  .winHousePicture {
-    position: absolute;
-    margin: 0 0 25px 130px;
-    opacity: 0;
-  }
-  
-  .edgingHouse {
-    position: absolute;
-    margin: 0 auto;
-    opacity: 1;
-  }
-  .winHousePictureShow {
-    opacity: 1;
-    -webkit-transition: opacity 3s;
-    -moz-transition: opacity 3s;
-    transition: opacity 3s;
-  }
-  
-  .fadedoll_9 {
-    opacity: 0;
-    transition: all 1s ease;
-    pointer-events: none;
-  }
-  
-  .onViewdoll_9{
-    z-index: 1000;
-    opacity: 1;
-    transition: all 1s ease;
-    pointer-events: none;
-  }
-  .dragTransition {
-    transition: all 1s;
-  }
+}
+
+.smiledoll_9 {
+  height: 300px;
+}
+
+.doll_9_Fade {
+  opacity: 0;
+}
+
+.doll_9_DropWrapper svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* .edgingHouse {
+  position: absolute;
+  margin: 0 auto;
+  opacity: 1;
+} */
+/* .winHousePictureShow {
+  opacity: 1;
+  -webkit-transition: opacity 3s;
+  -moz-transition: opacity 3s;
+  transition: opacity 3s;
+} */
+
+.fadedoll_9 {
+  opacity: 0;
+  transition: all 1s ease;
+  pointer-events: none;
+}
+
+.onViewdoll_9 {
+  z-index: 1000;
+  opacity: 1;
+  transition: all 1s ease;
+  pointer-events: none;
+}
+.dragTransition {
+  transition: all 1s;
+}
