@@ -30,7 +30,7 @@
     resetBtn.addEventListener('click', reset);
 
     function reset() {
-        bed.src = 'Images_1/doll_2_img/bed.jpg'
+        bed.src = 'Images_1/doll_2_img/crib.png'
         draggingItem.classList.remove('hide')
         well_done.classList.remove('onViewdoll_2');
 
