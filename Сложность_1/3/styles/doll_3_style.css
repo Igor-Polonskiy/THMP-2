@@ -51,7 +51,7 @@
     box-sizing: border-box;
     width: 80%;
     position: relative;
-    height: 900px;
+    height: 450px;
     border: 40px solid #2eb4ff;
     border-radius: 30px;
     display: flex;
@@ -62,9 +62,9 @@
   
   
   .doll_3_insideBox {
-    pointer-events: auto;
-    width: 580px;
-    height: 280px;
+    width: 100%;
+   display: flex;
+   justify-content: space-evenly;
   }
   
   .doll_3_item {
@@ -148,4 +148,25 @@
   
   .dragTransition {
     transition: all 1s;
+  }
+  .doll_3_svg{
+height: 250px;
+
+
+  }
+  .containerdoll_3{
+    width: 100%;
+  }
+  .hovered{
+    stroke: blueviolet;
+    stroke-width: 3px;
+  }
+  .hoveredClicked{
+    transition: 2s linear; 
+    stroke: black;
+stroke-width: 1px;
+  }
+  .hoveredDoll{
+    stroke: blueviolet;
+    stroke-width: 3px;
   }
