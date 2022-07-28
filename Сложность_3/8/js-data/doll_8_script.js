@@ -25,25 +25,25 @@
     {
       id: 1,
       name: "playBtn",
-      src: "Images_1/doll_8_img/play_button.png",
+      src: "Images_1/doll_8_img/buttons-play.svg",
       sound: btnSound,
     },
     {
       id: 2,
       name: "doll-bow",
-      src: "Images_1/doll_8_img/bant_doll.png",
+      src: "Images_1/doll_8_img/bow.svg",
       sound: bowSound,
     },
     {
       id: 3,
       name: "doll-dress",
-      src: "Images_1/doll_8_img/dress_wear_doll.png",
+      src: "Images_1/doll_8_img/dress.svg",
       sound: dressSound,
     },
     {
       id: 4,
       name: "doll-shoes",
-      src: "Images_1/doll_8_img/shoes_doll.png",
+      src: "Images_1/doll_8_img/sandals.svg",
       sound: shoesSound,
     },
   ];
@@ -64,18 +64,25 @@
     }
     if (Number(e.target.dataset.id) < 4) {
       e.target.parentElement.classList.add("hide");
-      allActionsBlocks[
-        Number(e.target.parentElement.dataset.id)
-      ].classList.remove("hide");
+
+      setTimeout(() => {
+        allActionsBlocks[
+          Number(e.target.parentElement.dataset.id)
+        ].classList.remove("hide");
+      }, 1000);
+
       setTimeout(() => {
         playSound(
           elementsForRender[Number(e.target.parentElement.dataset.id)].sound
         );
-      }, 500);
-    } else {
-      e.target.parentElement.classList.add("hide");
+      }, 1500);
 
-      winTextSwitcher();
+    } else {
+      playSound(flippingSound);
+      e.target.parentElement.classList.add("hide");
+      setTimeout(() => {
+        winTextSwitcher();
+      }, 1000);
     }
   }
 
