@@ -33,6 +33,7 @@
       id: 2,
       name: "doll-sitting",
       src: "Images_1/doll_5_img/doll-sitting-on-chair.png",
+      // src: "Images_1/doll_5_img/doll-sitting-on-chair.svg",
 
       gifSrc: "",
     },
@@ -90,12 +91,19 @@
 
         changeImgToGif(e, e.target.id);
 
-        currentSound.addEventListener("ended", () => {
-          e.target.parentElement.classList.add("hide");
+        if (soundOn) {
+          currentSound.addEventListener("ended", () => {
+            setTimeout(() => {
+              e.target.parentElement.classList.add("hide");
+              winTextSwitcher();
+            }, 1500);
+          });
+        } else {
           setTimeout(() => {
+            e.target.parentElement.classList.add("hide");
             winTextSwitcher();
-          }, 500);
-        });
+          }, 5000);
+        }
         break;
 
       default:
@@ -164,9 +172,11 @@
     return pictures
       .map((picture, index) => {
         const isVisible = index === 0 ? "" : "hide";
+        const backgroundColor =
+          picture.name === "doll-sitting" ? "doll_5_sitting" : "";
 
         return `<div class="doll_5_action ${isVisible}" data-id=${picture.id}>
-                      <div style="background-image:url(${picture.src})" data-id=${picture.id} class='doll_5_image'></div>
+                      <div style="background-image:url(${picture.src})" data-id=${picture.id} class='doll_5_image ${backgroundColor}'></div>
                       <div id=${picture.id} class="doll_5_red-button"></div>
                       </div>
                       `;
@@ -181,12 +191,11 @@
         el.classList.remove("hide");
       } else if (index === allActionsBlocks.length - 1) {
         el.classList.add("hide");
-
-        const findedImage = findImage(el.dataset.id);
-        setBackground(el.firstElementChild, findedImage.src);
       } else {
         el.classList.add("hide");
       }
+      const findedImage = findImage(el.dataset.id);
+      setBackground(el.firstElementChild, findedImage.src);
     });
     resetSound(currentSound);
     well_done.classList.remove("onViewdoll_5");
