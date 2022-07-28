@@ -12,7 +12,10 @@
     const contentBlocker = 'doll_3_ContentBlocker';
     const well_done = wrapper.querySelector('.doll_3_Well_done');
     const imgs = wrapper.querySelectorAll('.doll_3_svg')
-    const soundSad = document.querySelector('#doll_3_1_mmr')
+    const soundFun = document.querySelector('#doll_3_1_mmr')
+    const soundSad = document.querySelector('#doll_3_2_mmr')
+    const doll = wrapper.querySelector('#Doll')
+    
 
 
     // hide" draggable="true" ondrop="return false"
@@ -31,12 +34,12 @@
                 }, 2000)
             }
             else {
-                console.log(item)
                 item.classList.add('hoveredDoll')
-                imgs.forEach(i => {
-                    i.removeEventListener('mouseenter', () => { mouseover(i) })
-                    i.removeEventListener('mouseleave', () => { mouseleave(i) })
-                })
+                playSound(soundFun)
+                setTimeout(()=>{
+                    insideBox.classList.add('hide')
+                    well_done.classList.add('onViewdoll_3');
+                },2000)
             }
         })
     })
@@ -68,7 +71,9 @@
 
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', () => {
-
+        insideBox.classList.remove('hide')
+        well_done.classList.remove('onViewdoll_3');
+        doll.classList.remove('hoveredDoll')
     });
 
 

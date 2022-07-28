@@ -75,12 +75,13 @@
   }
   
   .doll_3_Well_done {
-    height: 150px;
+    height: 300px;
     position: absolute;
-    /* font-size: 50px;
-  font-weight: bold; */
-    /* color: #ed1e79; */
-    /* font-family: Comic Sans MS; */
+    top:0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
   }
   
   .doll_3_Wrong {
@@ -164,7 +165,7 @@ height: 250px;
   .hoveredClicked{
     transition: 2s linear; 
     stroke: black;
-stroke-width: 1px;
+    stroke-width: 1px;
   }
   .hoveredDoll{
     stroke: blueviolet;
