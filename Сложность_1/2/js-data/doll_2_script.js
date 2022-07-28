@@ -20,19 +20,21 @@
     const soundPut = document.querySelector('#doll_2_2_mmr')
     const soundSong = document.querySelector('#doll_2_3_mmr')
     const well_done = wrapper.querySelector('.doll_2_Well_done')
+    const eyes = wrapper.querySelector('.doll_2_eyes')
 
 
     // Собирается элементы в переменные, создаются вспомогательные переменные
 
 
-    let windoll_2_ = false;
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', reset);
 
     function reset() {
         bed.src = 'Images_1/doll_2_img/crib.png'
-        draggingItem.classList.remove('hide')
+        doll.classList.remove('hide')
         well_done.classList.remove('onViewdoll_2');
+        doll.classList.remove('doll_2_rotate')
+        eyes.style.display = 'none'
 
     }
     // Обработчик кнопки "Полный экран"
@@ -76,6 +78,7 @@
         draggingElem.style.top = null;
         draggingElem.style.left = null;
         dropPlace.append(draggingElem);
+        draggingItem = null
     }
 
     doll.addEventListener('pointerdown', mouseDown)
@@ -159,23 +162,16 @@
             draggingItem.hidden = false;
 
             if (!elemBelow) return;
+            if(elemBelow.classList.contains('doll_2_bed')){
+                draggingItem.classList.add('doll_2_rotate')
+                eyes.style.display = 'inherit'
+            }else {
+                draggingItem.classList.remove('doll_2_rotate')
+                eyes.style.display = 'none'
+        }
 
             // ОБРАБОТКА СОБЫТИЯ НАХОЖДЕНИЯ НАД БЛОКОМ И ВЫЛЕТА ИЗ НЕГО (ПО НЕОБХОДИМИОСТИ)
-
-
-            let droppableBelow = elemBelow.closest('.houseElement'); // БЕРЁМ НУЖНЫЙ БЛОК 
-
-            if (currentDroppable != droppableBelow) {
-                if (currentDroppable) {
-                    // ЛОГИКА ОБРАБОТКИ ПРОЦЕССА "ВЫЛЕТА" ИЗ DROPPABLE
-                    leaveDroppable(currentDroppable);
-                }
-                currentDroppable = droppableBelow;
-                // ЛОГИКА ОБРАБОТКИ ПРОЦЕССА, КОГДА МЫ "ВЛЕТАЕМ" В ЭЛЕМЕНТ
-                if (currentDroppable) {
-                    enterDroppable(currentDroppable);
-                }
-            }
+           
         }
 
 
@@ -244,30 +240,4 @@
     };
 
 
-
-
-
-    // обработка положительного или отрицательного результата сбора домика
-
-
-
-
-
-
-    function winTextSwitcherdoll_2_(feedBack) {
-        if (windoll_2_) {
-            if (wrapper.querySelector('.doll_2_Well_done').classList.contains('fadedoll_2_')) {
-
-                wrapper.querySelector('.doll_2_Well_done').classList.remove('fadedoll_2_');
-                wrapper.querySelector('.doll_2_Well_done').classList.add('onViewdoll_2_');
-                feedBackdoll_2_.src = feedBack;
-            }
-            else if (wrapper.querySelector('.doll_2_Well_done').classList.contains('onViewdoll_2_')) {
-                wrapper.querySelector('.doll_2_Well_done').classList.remove('onViewdoll_2_');
-                wrapper.querySelector('.doll_2_Well_done').classList.add('fadedoll_2_');
-
-            }
-        }
-
-    }
 })()

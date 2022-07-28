@@ -213,3 +213,6 @@ html {
     transition: all 1s ease;
     pointer-events: none;
   }
+  .doll_2_rotate{
+    transform: rotate(90deg);
+  }
