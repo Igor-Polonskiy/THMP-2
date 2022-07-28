@@ -122,26 +122,20 @@ html {
 
 .doll_5_action {
   width: 100%;
-  /* width: 80%; */
+
   height: 100%;
-  /* height: 80%; */
+
   display: flex;
   justify-content: center;
   align-items: center;
-  /* align-items: flex-end; */
+
   gap: 20px;
-  /* position: relative; */
+
   position: absolute;
   margin-bottom: 10px;
 }
-/* .doll_5_imageBox {
-  width: 500px;
-  height: 500px;
-} */
+
 .doll_5_image {
-  /* background-color: #fff; */
-  /* width: 800px;
-  height: 600px; */
   width: 800px;
   height: 700px;
   align-self: flex-end;
@@ -160,17 +154,3 @@ html {
 .doll_5_red-button:active {
   background-image: url("../Images_1/doll_5_img/red-pressed.svg");
 }
-
-/* .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-} */
