@@ -1,42 +1,33 @@
 (() => {
-  // doll_9_
-
   // Собираются элементы в переменные
   const wrapper = document.querySelector(".doll_9_Wrapper");
 
   const soundBtn = wrapper.querySelector(".doll_9_MuteSound");
-  //   const divSet = wrapper.querySelector(".doll_9_Set");
-  // const counter = wrapper.querySelector('.itemCount');
+
   const container = wrapper.querySelector(".doll_9_Container");
-  //   const sliderwrapper = wrapper.querySelector(".doll_9_SliderWrapper");
+
   const divSet = wrapper.querySelector(".doll_9_SliderWrapper");
   const resetBtn = wrapper.querySelector(".doll_9_ResetBtn");
   const dollSvg = wrapper.querySelector(".doll_9_dropSvg");
-  const dropWrapper = wrapper.querySelector(".doll_9_DropWrapper");
+
   const fullScreenBtn = wrapper.querySelector(".doll_9_FullScreenBtn");
   const captureSound = wrapper.querySelector("#doll_9_1_mmr");
   const bellSound = wrapper.querySelector("#doll_9_2_mmr");
   const winSound = wrapper.querySelector("#doll_9_3_mmr");
-  // const feedBackdoll_9_ = wrapper.querySelector(".smiledoll_9");
+
   const wellDone = wrapper.querySelector(".doll_9_Well_done");
 
   // Собирается элементы в переменные, создаются вспомогательные переменные
-  //   console.log(dollSvg);
-  // let windoll_9_ = false;
+
   let soundOn = false;
   let draggingItem;
   let elemBelow;
-  // let currentSound;
   let winCount = 0;
 
-  //   console.log([...dollSvg.children]);
   const hideElements = [...dollSvg.children].filter((el) =>
     el.classList.contains("hide")
   );
-  //   console.log(
-  //     "🚀 ~ file: doll_9_script.js ~ line 31 ~ hideElements",
-  //     hideElements
-  //   );
+
   const dollsClothes = [
     {
       id: 1,
@@ -45,52 +36,35 @@
     },
     {
       id: 2,
-      //   src: "Images_1/doll_9_img/dress.png",
       src: "Images_1/doll_9_img/dress.svg",
       name: "dress",
     },
     {
       id: 3,
-      //   src: "Images_1/doll_9_img/sandals.png",
       src: "Images_1/doll_9_img/sandals.svg",
       name: "sandals",
     },
   ];
 
-  //   sliderwrapper.insertAdjacentHTML("beforeend", createMarkup(dollsClothes));
   divSet.insertAdjacentHTML("beforeend", createMarkup(dollsClothes));
-  //   console.dir(dollsClothes[1].src);
 
   // Обработчик кнопки "Вернуть к исходному состоянию"
   resetBtn.addEventListener("click", reset);
   // обработчик кнопки вкл/выкл звука
   soundBtn.addEventListener("click", soundChanger);
   // обработчик перемещения элементов
-  //   sliderwrapper.addEventListener("pointerdown", mouseDown);
+
   divSet.addEventListener("pointerdown", mouseDown);
 
   function reset() {
-    // console.log("reset");
     winCount = 0;
     draggingItem = null;
     divSet.innerHTML = "";
     divSet.insertAdjacentHTML("beforeend", createMarkup(dollsClothes));
 
-    // [...divSet.children].forEach((el) => el.classList.remove("hide"));
-    // [...divSet.children].forEach((el) => el.classList.remove("hidden"));
-    // console.log(
-    //   [...divSet.children]
-    //     .slice(1, divSet.children.length)
-    //     .sort((a, b) => Number(a.dataset.id) - Number(b.dataset.id))
-    // );
-    // [...divSet.children]
-    //   .slice(1, divSet.children.length)
-    //   .sort((a, b) => Number(a.dataset.id) - Number(b.dataset.id))
-    //   .forEach((el) => el.classList.remove("hidden"));
     hideElements.forEach((el) => el.classList.add("hide"));
-    // winTextSwitcherdoll_9();
-    wellDone.classList.remove("onViewdoll_9");
 
+    wellDone.classList.remove("onViewdoll_9");
     wellDone.classList.add("fadedoll_9");
   }
   // Обработчик кнопки "Полный экран"
@@ -123,7 +97,7 @@
                             style="background-image:url(${picture.src})"
                             draggable="false"
                             data-name=${picture.name}
-                            data-id=${picture.id}
+
                             >
                       </div>
                 `;
@@ -178,14 +152,7 @@
     draggingItem = event.target;
     // находим индекс элемента, который берем в списке отрисованных. dragBox - контейнер для перетаскиваемых элементов
     const findIdx = [...divSet.children].findIndex((el) => el === draggingItem);
-    // const findIdx = [...divSet.children].find((el) => el === draggingItem);
-    // const findIdx = dollsClothes.find(
-    //   (el) => el.name === draggingItem.dataset.name
-    // ).id;
-    // console.log(
-    //   "🚀 ~ file: doll_9_script.js ~ line 169 ~ mouseDown ~ findIdx",
-    //   findIdx
-    // );
+
     draggingItem.style.cursor = "url(Images_1/doll_9_img/cursor.png), auto";
     const elemDraggingBanBorder = container; //элемент за границы которого запрещён вылет перетаскиваемой фигуры
     const elemDraggingStartPlace = divSet; //элемент первоначального расположения перетаскиваемых фигур (стартовое состояние)
@@ -306,9 +273,8 @@
 
       document.removeEventListener("pointermove", onMouseMove);
 
-      //   console.log(elemBelow);
       // ЛОГИКА ОБРАБОТКИ ПОПАДАНИЯ НА НУЖНЫЙ БЛОК И НАОБОРОТ
-      //   if (elemBelow.classList.contains("houseElement")) {
+
       if (elemBelow.parentElement.id === draggingItem.dataset.name) {
         elemBelow.parentElement.classList.remove("hide");
         // draggingItem.classList.add("hide");
@@ -317,17 +283,6 @@
         dropAppend(divSet, draggingItem);
         playSound(bellSound);
         winCount += 1;
-        // changeStylesAndAppend(elemBelow, draggingItem);
-        // changeStylesAndAppend(
-        //   //   elemBelow.parentElement.parentElement.parentElement,
-        //   //   elemBelow.parentElement.parentElement,
-        //   elemBelow.parentElement,
-        //   draggingItem
-        // );
-        // house.childNodes.forEach((item) => {
-        //   item.classList?.remove("houseElementsShadowRed");
-        // });
-        // houseGameResult();
       } else if (
         elemBelow.parentElement.parentElement.id === draggingItem.dataset.name
       ) {
@@ -356,59 +311,38 @@
     }
 
     function smoothTransition(draggingElem) {
-      //document.body.style.pointerEvents = 'none'
-      //   elemsdoll_9_.forEach((e) => {
-      //     e.removeEventListener("pointerdown", mouseDown);
-      //   });
-      // console.log(draggingElem.getBoundingClientRect());
+      document.body.style.pointerEvents = "none";
+
       let coordX, coordY;
       draggingElem.classList.add("dragTransition");
-      // console.log(elemDraggingStartPlace.getBoundingClientRect());
+
       coordX =
         elemDraggingStartPlace.getBoundingClientRect().left +
         elemDraggingStartPlace.getBoundingClientRect().width / 4;
-      // coordY = elemDraggingStartPlace.getBoundingClientRect().top * 5;
+
       coordY = elemDraggingStartPlace.getBoundingClientRect().height / 2;
       // +
-      // window.pageYOffset / 2;
+      // window.pageYOffset;
       draggingElem.style.left = `${coordX}px`;
       draggingElem.style.top = `${coordY}px`;
       setTimeout(() => {
         draggingElem.classList.remove("dragTransition");
-        //document.body.style.pointerEvents = 'auto'
-        // elemsdoll_9_.forEach((e) => {
-        //   e.addEventListener("pointerdown", mouseDown);
-        // });
+        document.body.style.pointerEvents = "auto";
       }, 1000);
     }
   }
 
   // обработка положительного или отрицательного результата сбора домика
 
-  //   function winTextSwitcherdoll_9(feedBack) {
   function winTextSwitcherdoll_9() {
-    // if (windoll_9_) {
-    if (
-      //   wrapper
-      //     .querySelector(".doll_9_Well_done")
-      wellDone.classList.contains("fadedoll_9")
-    ) {
-      //   wrapper.querySelector(".doll_9_Well_done").classList.remove("fadedoll_9");
+    if (wellDone.classList.contains("fadedoll_9")) {
       wellDone.classList.remove("fadedoll_9");
-      //   wrapper.querySelector(".doll_9_Well_done").classList.add("onViewdoll_9");
+
       wellDone.classList.add("onViewdoll_9");
-      // feedBackdoll_9_.src = feedBack;
-    } else if (
-      //   wrapper
-      //     .querySelector(".doll_9_Well_done")
-      wellDone.classList.contains("onViewdoll_9")
-    ) {
-      //   wrapper
-      //     .querySelector(".doll_9_Well_done")
+    } else if (wellDone.classList.contains("onViewdoll_9")) {
       wellDone.classList.remove("onViewdoll_9");
-      //   wrapper.querySelector(".doll_9_Well_done").classList.add("fadedoll_9");
+
       wellDone.classList.add("fadedoll_9");
     }
-    // }
   }
 })();
