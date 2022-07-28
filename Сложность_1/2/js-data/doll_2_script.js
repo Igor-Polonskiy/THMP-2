@@ -227,7 +227,7 @@
                 coordY
             draggingElem.classList.add('dragTransition')
             coordX = elemDraggingStartPlace.getBoundingClientRect().left + elemDraggingStartPlace.getBoundingClientRect().width / 2 - doll.getBoundingClientRect().width / 2
-            coordY = elemDraggingStartPlace.getBoundingClientRect().top + window.pageYOffset + 30
+            coordY = elemDraggingStartPlace.getBoundingClientRect().top + window.pageYOffset  + elemDraggingStartPlace.getBoundingClientRect().height / 2  - doll.getBoundingClientRect().height / 2
             draggingElem.style.left = `${coordX}px`
             draggingElem.style.top = `${coordY}px`
             setTimeout(() => {
