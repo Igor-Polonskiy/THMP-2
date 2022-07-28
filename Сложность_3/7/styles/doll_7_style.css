@@ -162,7 +162,7 @@ html {
 
 .play_button_doll_7 {
   height: 500px;
-  transition: height 0.5s ease;
+  /* transition: height 0.5s ease; */
 }
 .clothes_wrapper_doll_7{
   transition: all 0.5s ease;
@@ -170,13 +170,14 @@ html {
 }
 
 .doll_7__opacity {
+  transition: all 0.5s ease;
   opacity: 0;
 }
 
-.play_button_doll_7:hover {
+/* .play_button_doll_7:hover {
   transition: height 0.5s ease;
-  height: 600px;
-}
+  height: 520px;
+} */
 
 .containerdoll_7 {
   display: flex;
@@ -185,3 +186,13 @@ html {
   height: 100%;
   width: 100%;
 }
+
+.clothes_img {
+  /* transition: all 0.5s ease; */
+  width: 500px;
+}
+
+/* .clothes_img:hover {
+  transition: all 0.5s ease;
+  width: 550px;
+} */

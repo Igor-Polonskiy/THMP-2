@@ -30,17 +30,17 @@
     const clothes = [
         {
             id: 'bant_doll_7',
-            src: 'Images_1/doll_7_img/bant_doll.png',
+            src: 'Images_1/doll_7_img/bow.svg',
             sound: bantOff_sound
         },
         {
             id: 'dress_doll_7',
-            src: 'Images_1/doll_7_img/dress_wear_doll.png',
+            src: 'Images_1/doll_7_img/dress.svg',
             sound: dressOff_sound
         },
         {
             id: 'shoes_doll_7',
-            src: 'Images_1/doll_7_img/shoes_doll.png',
+            src: 'Images_1/doll_7_img/sandals.svg',
             sound: shoesOff_sound
         }
     ];
@@ -68,6 +68,7 @@
     function changeClothes(clothes, id, sound) {
         let divWrapper = document.createElement('div');
         divWrapper.classList.add('clothes_wrapper_doll_7');
+        divWrapper.classList.add('doll_7__opacity');
         let imgClothes = document.createElement('img');
         imgClothes.setAttribute('src', clothes);
         imgClothes.setAttribute('id', id);
@@ -76,6 +77,10 @@
         divWrapper.appendChild(imgClothes);
         const theFirstChild = gameActionWrapper.firstChild;
         gameActionWrapper.insertBefore(divWrapper, theFirstChild);
+        setTimeout(() => {
+            divWrapper.classList.remove('doll_7__opacity');
+        }, 0);
+        
         divWrapper.addEventListener('click', playHandlerInAction, false);
         setTimeout(() => {
             playSound(sound);
@@ -83,13 +88,13 @@
     }
 
     function playHandlerInAction() {
-
         playSound(flipping_sound);
         const clothes_wrapper = wrapper.querySelector('.clothes_wrapper_doll_7')
         clothes_wrapper.classList.add('doll_7__opacity')
         setTimeout(() => {
             gameActionWrapper.removeChild(gameActionWrapper.firstChild);
-            if (numberAction > 2) {
+          
+            if (numberAction > (clothes.length - 1)) {
                 win = true;
                 winTextSwitcher();
                 return;
