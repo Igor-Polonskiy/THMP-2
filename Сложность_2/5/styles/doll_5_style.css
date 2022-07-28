@@ -33,6 +33,7 @@ html {
 .doll_5_Main {
   box-shadow: inset 0 66px 73px -30px #333;
   background-color: #fff;
+
   background-size: cover;
   box-sizing: border-box;
   width: 80%;
@@ -122,43 +123,41 @@ html {
 
 .doll_5_action {
   width: 100%;
+
   height: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: 20px;
-  position: relative;
+
+  position: absolute;
+  margin-bottom: 10px;
+  transition: all 1s ease;
 }
-.doll_5_imageBox {
-  width: 500px;
-  height: 500px;
-}
+
 .doll_5_image {
   width: 800px;
-  height: 600px;
 
+  height: 600px;
+  align-self: flex-end;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.doll_5_sitting {
+  background-color: #fff;
 }
 .doll_5_red-button {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  background-image: url("../Images_1/doll_5_img/red-button.svg");
 }
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+.doll_5_red-button:active {
+  background-image: url("../Images_1/doll_5_img/red-pressed.svg");
 }
