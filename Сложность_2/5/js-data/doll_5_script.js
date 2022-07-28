@@ -24,30 +24,32 @@
     {
       id: 1,
       name: "doll_stands",
-      src: "Images_1/doll_5_img/doll-walking-cover.png",
-      gifSrc: "Images_1/doll_5_img/doll-walking.gif",
+      // src: "Images_1/doll_5_img/doll-walking-cover.png",
+      src: "Images_1/doll_5_img/walk-2.png",
+      // gifSrc: "Images_1/doll_5_img/doll-walking.gif",
+      gifSrc: "Images_1/doll_5_img/walk-2.gif",
     },
     {
       id: 2,
       name: "doll-sitting",
-      src: "Images_1/doll_5_img/doll-sitting.png",
+      src: "Images_1/doll_5_img/doll-sitting-on-chair.png",
 
       gifSrc: "",
     },
     {
       id: 3,
       name: "doll-eating",
-      src: "Images_1/doll_5_img/doll-eating-cover.png",
-      gifSrc: "Images_1/doll_5_img/doll-eating.gif",
+      src: "Images_1/doll_5_img/eat.png",
+      gifSrc: "Images_1/doll_5_img/eat.gif",
     },
     {
       id: 4,
       name: "doll-sleeping",
-      src: "Images_1/doll_5_img/doll-sleeping-cover.png",
-      gifSrc: "Images_1/doll_5_img/doll-sleeping.gif",
+      src: "Images_1/doll_5_img/sleep.png",
+      gifSrc: "Images_1/doll_5_img/sleep.gif",
     },
   ];
-  const redBtnSrc = "Images_1/doll_5_img/red-button.jpg";
+  // const redBtnSrc = "Images_1/doll_5_img/red-button.svg";
 
   divMain.insertAdjacentHTML("beforeend", createMarkup(dollActions));
 
@@ -130,10 +132,12 @@
   }
   function imageChanger(e) {
     if (Number(e.target.parentElement.dataset.id) <= 3) {
-      e.target.parentElement.classList.add("visually-hidden");
+      // e.target.parentElement.classList.add("visually-hidden");
+      e.target.parentElement.classList.add("hide");
       allActionsBlocks[
         Number(e.target.parentElement.dataset.id)
-      ].classList.remove("visually-hidden");
+        // ].classList.remove("visually-hidden");
+      ].classList.remove("hide");
 
       const findedImage = findImage(e.target.parentElement.dataset.id);
 
@@ -161,13 +165,15 @@
   function createMarkup(pictures) {
     return pictures
       .map((picture, index) => {
-        const isVisible = index === 0 ? "" : "visually-hidden";
+        // const isVisible = index === 0 ? "" : "visually-hidden";
+        const isVisible = index === 0 ? "" : "hide";
 
         return `<div class="doll_5_action ${isVisible}" data-id=${picture.id}>
                       <div style="background-image:url(${picture.src})" data-id=${picture.id} class='doll_5_image'></div>
-                      <div id=${picture.id} style="background-image:url(${redBtnSrc})" class="doll_5_red-button"></div>
-                </div>
-                `;
+                      <div id=${picture.id} class="doll_5_red-button"></div>
+                      </div>
+                      `;
+        // <div id=${picture.id} style="background-image:url(${redBtnSrc})" class="doll_5_red-button"></div>
       })
       .join("");
   }
@@ -176,15 +182,18 @@
   resetBtn.addEventListener("click", () => {
     allActionsBlocks.forEach((el, index) => {
       if (index === 0) {
-        el.classList.remove("visually-hidden");
+        // el.classList.remove("visually-hidden");
+        el.classList.remove("hide");
       } else if (index === allActionsBlocks.length - 1) {
         el.classList.remove("hide");
-        el.classList.add("visually-hidden");
+        // el.classList.add("visually-hidden");
+        el.classList.add("hide");
 
         const findedImage = findImage(el.dataset.id);
         setBackground(el.firstElementChild, findedImage.src);
       } else {
-        el.classList.add("visually-hidden");
+        // el.classList.add("visually-hidden");
+        el.classList.add("hide");
       }
     });
     resetSound(currentSound);
