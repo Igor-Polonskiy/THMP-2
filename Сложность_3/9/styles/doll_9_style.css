@@ -82,6 +82,7 @@ html {
   align-items: center;
   gap: 20px;
   position: relative;
+  /* border: 1px solid black; */
 }
 
 .doll_9_DropWrapper {
@@ -187,6 +188,10 @@ html {
 .hide {
   /* display: none; */
   opacity: 0;
+  /* opacity: 1; */
+}
+.hidden {
+  display: none;
 }
 /*
   .house {
@@ -258,15 +263,15 @@ html {
   background-position: center;
 }
 .doll_9_clothes_bow {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
 .doll_9_clothes_dress {
-  width: 300px;
-  height: 300px;
+  width: 270px;
+  height: 280px;
 }
 .doll_9_clothes_sandals {
-  width: 250px;
+  width: 242px;
   height: 180px;
 }
 .doll_9_Well_done {
