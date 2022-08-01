@@ -19,6 +19,7 @@
 
     const contentBlocker = 'doll_4_ContentBlocker';
     const head = wrapper.querySelector('#head')
+    const face = wrapper.querySelector('#face')
     const mouth = wrapper.querySelector('#mouth')
 
 
@@ -29,6 +30,7 @@
     head.addEventListener('mouseover', () => {
         if (!eyes[0].classList.contains('hoveredEye')&&!mouth.classList.contains('hoveredEye')) {
             head.classList.add('hovered')
+            face.classList.add('hovered')
         }
     })
     head.addEventListener('mouseenter', () => {
@@ -38,11 +40,13 @@
     })
     head.addEventListener('mouseout', () => {
         head.classList.remove('hovered')
+        face.classList.remove('hovered')
     })
     head.addEventListener('click', (e) => {
         if (!eyes[0].classList.contains('hoveredEye')&&!mouth.classList.contains('hoveredEye')) {
             if(!head.classList.contains('selected')){
                 head.classList.add('selected')
+                face.classList.add('selected')
             win++
             setTimeout(() => winCheker(), 1500)
             }
@@ -213,6 +217,7 @@
             item.classList.remove('selectedEye')
         })
         head.classList.remove('selected')
+        face.classList.remove('selected')
         mouth.classList.remove('selectedEye')
         win = 0
         well_done.classList.remove('onViewdoll_4');
