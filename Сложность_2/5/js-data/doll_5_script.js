@@ -24,30 +24,22 @@
     {
       id: 1,
       name: "doll_stands",
-
-      src: "Images_1/doll_5_img/walk.png",
-
-      gifSrc: "Images_1/doll_5_img/walk.gif",
+      src: "Images_1/doll_5_img/walk.gif",
     },
     {
       id: 2,
       name: "doll-sitting",
       src: "Images_1/doll_5_img/doll-sitting-on-chair.png",
-      // src: "Images_1/doll_5_img/doll-sitting-on-chair.svg",
-
-      gifSrc: "",
     },
     {
       id: 3,
       name: "doll-eating",
-      src: "Images_1/doll_5_img/eat.png",
-      gifSrc: "Images_1/doll_5_img/eat.gif",
+      src: "Images_1/doll_5_img/eat.gif",
     },
     {
       id: 4,
       name: "doll-sleeping",
-      src: "Images_1/doll_5_img/sleep.png",
-      gifSrc: "Images_1/doll_5_img/sleep.gif",
+      src: "Images_1/doll_5_img/sleep.gif",
     },
   ];
 
@@ -65,60 +57,35 @@
     switch (e.target.id) {
       case "1":
         currentSound = walkingSound;
-
         playSound(currentSound);
 
-        changeImgToGif(e, e.target.id);
         break;
       case "2":
         currentSound = sittingSound;
-
         playSound(currentSound);
 
-        changeImgToGif(e, e.target.id);
         break;
       case "3":
         currentSound = eatingSound;
-
         playSound(currentSound);
 
-        changeImgToGif(e, e.target.id);
         break;
       case "4":
         currentSound = sleepingSound;
-
         playSound(currentSound);
-
-        changeImgToGif(e, e.target.id);
 
         if (soundOn) {
           currentSound.addEventListener("ended", () => {
             setTimeout(() => {
-              e.target.parentElement.classList.add("hide");
+              e.target.parentElement.classList.add("semi-transparent");
               winTextSwitcher();
             }, 1500);
           });
-        } else {
-          setTimeout(() => {
-            e.target.parentElement.classList.add("hide");
-            winTextSwitcher();
-          }, 5000);
         }
         break;
 
       default:
         break;
-    }
-  }
-
-  function changeImgToGif(e, id) {
-    const findedImage = findImage(id);
-
-    if (
-      e.target.previousElementSibling.style.backgroundImage.includes(".png") &&
-      findedImage.gifSrc
-    ) {
-      setBackground(e.target.previousElementSibling, findedImage.gifSrc);
     }
   }
 
@@ -130,28 +97,24 @@
     }
   }
 
-  function findImage(id) {
-    return dollActions.find((el) => el.id === Number(id));
-  }
-
-  function setBackground(target, url) {
-    target.style.backgroundImage = `url(
-        ${url})`;
-  }
   function imageChanger(e) {
     if (Number(e.target.parentElement.dataset.id) <= 3) {
       e.target.parentElement.classList.add("hide");
       allActionsBlocks[
         Number(e.target.parentElement.dataset.id)
       ].classList.remove("hide");
-
-      const findedImage = findImage(e.target.parentElement.dataset.id);
-
-      setBackground(e.target, findedImage.src);
-
+    }
+    if (soundOn) {
       resetSound(currentSound);
       currentSound = flippingSound;
       playSound(currentSound);
+    } else {
+      if (Number(e.target.parentElement.dataset.id) === 4) {
+        setTimeout(() => {
+          e.target.parentElement.classList.add("semi-transparent");
+          winTextSwitcher();
+        }, 500);
+      }
     }
   }
 
@@ -191,11 +154,10 @@
         el.classList.remove("hide");
       } else if (index === allActionsBlocks.length - 1) {
         el.classList.add("hide");
+        el.classList.remove("semi-transparent");
       } else {
         el.classList.add("hide");
       }
-      const findedImage = findImage(el.dataset.id);
-      setBackground(el.firstElementChild, findedImage.src);
     });
     resetSound(currentSound);
     well_done.classList.remove("onViewdoll_5");

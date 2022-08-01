@@ -107,9 +107,15 @@ html {
   opacity: 0;
   transition: all 1s ease;
   pointer-events: none;
-  top: 50%;
+  /* right: 5%;
+  bottom: 25%; */
+  z-index: 10;
+  top: 5%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
 }
 
 .onViewdoll_5 {
@@ -160,4 +166,8 @@ html {
 }
 .doll_5_red-button:active {
   background-image: url("../Images_1/doll_5_img/red-pressed.svg");
+}
+
+.semi-transparent {
+  opacity: 0.3;
 }
