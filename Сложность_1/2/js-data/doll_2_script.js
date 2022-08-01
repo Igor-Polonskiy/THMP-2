@@ -212,7 +212,7 @@
                 setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 1000)
 
             }
-            draggingItem.removeEventListener('pointerup', onpointerup)
+            doll.removeEventListener('pointerup', onpointerup)
         };
 
         function smoothTransition(draggingElem) {
