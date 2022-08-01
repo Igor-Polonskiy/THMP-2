@@ -159,7 +159,7 @@
   }
   .hovered{
     stroke: blueviolet;
-    stroke-width: 3px;
+    stroke-width: 7px;
   }
   .hoveredClicked{
     transition: 2s linear; 
@@ -168,5 +168,5 @@
   }
   .hoveredDoll{
     stroke: blueviolet;
-    stroke-width: 3px;
+    stroke-width: 7px;
   }

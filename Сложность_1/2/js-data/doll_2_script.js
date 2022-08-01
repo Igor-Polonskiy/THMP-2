@@ -78,7 +78,7 @@
         draggingElem.style.top = null;
         draggingElem.style.left = null;
         dropPlace.append(draggingElem);
-        draggingItem = null
+        //draggingItem = null
     }
 
     doll.addEventListener('pointerdown', mouseDown)
@@ -86,10 +86,10 @@
 
     let draggingItem;
     let elemBelow;
-    function bedShake(e){
+    function bedShake(e) {
         bed.src = 'Images_1/doll_2_img/doll-sleeping.gif'
         playSound(soundSong)
-        bed.removeEventListener('pointerdown' , bedShake)
+        bed.removeEventListener('pointerdown', bedShake)
         well_done.classList.add('onViewdoll_2');
     }
 
@@ -162,16 +162,16 @@
             draggingItem.hidden = false;
 
             if (!elemBelow) return;
-            if(elemBelow.classList.contains('doll_2_bed')){
+            if (elemBelow.classList.contains('doll_2_bed')) {
                 draggingItem.classList.add('doll_2_rotate')
                 eyes.style.display = 'inherit'
-            }else {
+            } else {
                 draggingItem.classList.remove('doll_2_rotate')
                 eyes.style.display = 'none'
-        }
+            }
 
             // ОБРАБОТКА СОБЫТИЯ НАХОЖДЕНИЯ НАД БЛОКОМ И ВЫЛЕТА ИЗ НЕГО (ПО НЕОБХОДИМИОСТИ)
-           
+
         }
 
 
@@ -193,23 +193,23 @@
         draggingItem.addEventListener('pointerup', onpointerup)
         function onpointerup() {
             startAction = true;
-            if (clickWithoutMove) {
+            /*if (clickWithoutMove) {
                 smoothTransition(draggingItem)
                 setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 1000)
-            }
+            }*/
 
             document.removeEventListener('pointermove', onMouseMove);
 
             // ЛОГИКА ОБРАБОТКИ ПОПАДАНИЯ НА НУЖНЫЙ БЛОК И НАОБОРОТ
             if (elemBelow.classList.contains('doll_2_bed')) {
-                draggingItem.classList.add('hide')
+                doll.classList.add('hide')
                 changeStylesAndAppend(elemDraggingStartPlace, draggingItem);
                 bed.src = 'Images_1/doll_2_img/doll-sleeping-cover.png'
                 playSound(soundPut)
-                bed.addEventListener('pointerdown' , bedShake)
+                bed.addEventListener('pointerdown', bedShake)
             } else {
-                smoothTransition(draggingItem)
-                setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 1000)
+                    smoothTransition(draggingItem)
+                    setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, doll), 1000)
 
             }
             doll.removeEventListener('pointerup', onpointerup)
@@ -223,7 +223,7 @@
                 coordY
             draggingElem.classList.add('dragTransition')
             coordX = elemDraggingStartPlace.getBoundingClientRect().left + elemDraggingStartPlace.getBoundingClientRect().width / 2 - doll.getBoundingClientRect().width / 2
-            coordY = elemDraggingStartPlace.getBoundingClientRect().top + window.pageYOffset  + elemDraggingStartPlace.getBoundingClientRect().height / 2  - doll.getBoundingClientRect().height / 2
+            coordY = elemDraggingStartPlace.getBoundingClientRect().top + window.pageYOffset + elemDraggingStartPlace.getBoundingClientRect().height / 2 - doll.getBoundingClientRect().height / 2
             draggingElem.style.left = `${coordX}px`
             draggingElem.style.top = `${coordY}px`
             setTimeout(() => {
