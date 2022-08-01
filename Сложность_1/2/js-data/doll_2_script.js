@@ -35,6 +35,7 @@
         well_done.classList.remove('onViewdoll_2');
         doll.classList.remove('doll_2_rotate')
         eyes.style.display = 'none'
+        bed.removeEventListener('pointerdown', bedShake)
 
     }
     // Обработчик кнопки "Полный экран"
