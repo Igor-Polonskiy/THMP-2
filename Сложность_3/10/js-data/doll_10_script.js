@@ -12,15 +12,13 @@
     const contentBlocker = 'doll_10_ContentBlocker';
     const well_done = wrapper.querySelector('.doll_10_Well_done');
 
+    const imgs = wrapper.querySelectorAll('.doll_10_svg')
+
+    const soundFun = document.querySelector('#doll_10_1_mmr')
+    const soundSad = document.querySelector('#doll_10_2_mmr')
+    const doll = wrapper.querySelector('#Doll')
    
     // hide" draggable="true" ondrop="return false"
-
-   
-
-
-
-
-
 
     soundBtn.addEventListener('click', soundChanger);
     let soundOn = false;
@@ -46,24 +44,9 @@
 
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', () => {
-        for (let i = 0; i < elemsdoll_10_.length; i++) {
-            elemsdoll_10[i].classList.add("hide");
-            elemsdoll_10[i].style.position = 'relative ';
-            elemsdoll_10[i].style.top = '0px';
-            elemsdoll_10[i].style.left = '0px';
-            insideBox.append(elemsdoll_10_[i]);
-            // itemCounter();
-        }
-        removePointerEventsDraggableElems();
-        insideBox.addEventListener('mouseenter', showOpeningBox);
-        insideBox.addEventListener('mouseleave', fadeOpeningBox);
-        insideBox.addEventListener('click', openBox);
-        fadeOpeningBox();
-
-        if (winOpenBox) {
-            winTextSwitcher();
-            winOpenBox = false;
-        }
+        insideBox.classList.remove('hide')
+        well_done.classList.remove('onViewdoll_10');
+        doll.classList.remove('hoveredDoll')
     });
 
 
@@ -85,184 +68,36 @@
     }, false);
 
 
+    imgs.forEach(item => {
+        item.addEventListener('mouseenter', () => { mouseover(item) })
+        item.addEventListener('mouseleave', () => { mouseleave(item) })
+        item.addEventListener('click', () => {
+            if (item.classList.contains('notDoll')) {
+                playSound(soundSad)
+                item.classList.add('hoveredClicked')
+                setTimeout(() => {
+                    item.classList.remove('hoveredClicked')
+                    item.classList.remove('hovered')
+                }, 2000)
+            }
+            else {
+                item.classList.add('hoveredDoll')
+                playSound(soundFun)
+                setTimeout(()=>{
+                    insideBox.classList.add('hide')
+                    well_done.classList.add('onViewdoll_10');
+                },2000)
+            }
+        })
+    })
 
-    function changeStylesAndAppend(dropPlace, draggingElem) {
-        draggingElem.style.position = 'relative ';
-        draggingElem.style.zIndex = null;
-        draggingElem.style.top = null;
-        draggingElem.style.left = null;
-        dropPlace.appendChild(draggingElem);
+
+    function mouseover(item) {
+        item.classList.add('hovered')
     }
-
-
-    let draggingItem;
-    let elemBelow;
-
-
-    function mouseDown(event) {
-        if (event.button !== 0) return;
-        draggingItem = event.target;
-        draggingItem.style.cursor = "url(Images_1/doll_10_img/cursor.png), auto";
-        const elemDraggingBanBorder = divMain; //элемент за границы которого запрещён вылет перетаскиваемой фигуры
-        const elemDraggingStartPlace = insideBox; //элемент первоначального расположения перетаскиваемых фигур (стартовое состояние)
-
-        draggingItem.style.touchAction = 'none'; //ОБЯЗАТЕЛЬНОЕ УСЛОВИЕ(МОЖНО УБРАТЬ И ПРОПИСАТЬ В СТИЛЬ САМОМУ ОБЪЕКТУ) 
-
-
-        let shiftX = event.clientX - draggingItem.getBoundingClientRect().left;
-        let shiftY = event.clientY - draggingItem.getBoundingClientRect().top;
-
-        // ЛИММИТЫ КООРДИНАТ ОГРАНИЧИВАЮЩИЕ ВЫЛЕТ ПЕРЕТАСКИВАЕМОГО ЭЛЕМЕНТА ЗА БЛОК
-        //  (ПО УМОЛЧАНИЮ interact_zadanie - РОДИТЕЛЬ ВАШЕГО БЛОКА)
-        let limits = {
-            top: elemDraggingBanBorder.offsetTop + scrollY,
-            right: elemDraggingBanBorder.offsetWidth + elemDraggingBanBorder.offsetLeft + scrollX,
-            bottom: elemDraggingBanBorder.offsetHeight + elemDraggingBanBorder.offsetTop + scrollY,
-            left: elemDraggingBanBorder.offsetLeft + scrollX
-        };
-
-        draggingItem.style.position = 'absolute';
-        draggingItem.style.zIndex = 1000;
-        document.body.appendChild(draggingItem);
-
-        moveAt(event.pageX, event.pageY);
-
-        function moveAt(pageX, pageY) {
-            draggingItem.style.left = pageX - shiftX + 'px';
-            draggingItem.style.top = pageY - shiftY + 'px';
-        }
-
-        elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-
-        let clickWithoutMove = true;
-
-        function onMouseMove(event) {
-            let newLocation = {
-                x: limits.left,
-                y: limits.top
-            };
-            if (event.pageX > limits.right) {
-                newLocation.x = limits.right;
-            } else if (event.pageX > limits.left) {
-                newLocation.x = event.pageX;
-            }
-            if (event.pageY > limits.bottom) {
-                newLocation.y = limits.bottom;
-            } else if (event.pageY > limits.top) {
-                newLocation.y = event.pageY;
-            }
-
-            clickWithoutMove = false
-            moveAt(newLocation.x, newLocation.y);
-            // moveAt(event.pageX, event.pageY);
-
-            if (!event.path.includes(draggingItem)) {
-                window.addEventListener('pointerup', moveOut);
-            }
-            if (event.path.includes(draggingItem)) {
-                window.removeEventListener('pointerup', moveOut);
-            }
-
-            draggingItem.hidden = true;
-            elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-            draggingItem.hidden = false;
-
-            if (!elemBelow) return;
-
-            // ОБРАБОТКА СОБЫТИЯ НАХОЖДЕНИЯ НАД БЛОКОМ И ВЫЛЕТА ИЗ НЕГО (ПО НЕОБХОДИМИОСТИ)
-
-            // let currentDroppable = null;
-
-            // let droppableBelow = elemBelow.closest('.droppable'); // БЕРЁМ НУЖНЫЙ БЛОК 
-
-            // if (currentDroppable != droppableBelow) {
-            //     if (currentDroppable) { 
-            // ЛОГИКА ОБРАБОТКИ ПРОЦЕССА "ВЫЛЕТА" ИЗ DROPPABLE
-            //         leaveDroppable(currentDroppable);
-            //     }
-            //     currentDroppable = droppableBelow;
-            // ЛОГИКА ОБРАБОТКИ ПРОЦЕССА, КОГДА МЫ "ВЛЕТАЕМ" В ЭЛЕМЕНТ
-            //     if (currentDroppable) {
-            //         enterDroppable(currentDroppable);
-            //     }
-            // }
-        }
-
-        // КОГДА НАД ВЫБРАННЫМ БЛОКОМ
-        function enterDroppable(currentDroppable) {
-            // currentDroppable
-        }
-        // КОДА ВЫЛЕТЕЛИ ИЗ БЛОКА
-        function leaveDroppable(currentDroppable) {
-            // currentDroppable
-        }
-        document.addEventListener('pointermove', onMouseMove);
-
-
-        // КОГДА ВО ВРЕМЯ ПЕРЕТАСКИВАНИЯ КУРСОР ВЫНЕСЛИ ЗА ПРЕДЕЛЫ ОКНА БРАУЗЕРА И ОТПУСТИЛИ ЗАХВАТ ЭЛЕМЕНТА
-        function moveOut(e) {
-            smoothTransition(draggingItem)
-            setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 1000)
-
-            window.removeEventListener('pointerup', moveOut);
-            document.removeEventListener('pointermove', onMouseMove);
-        }
-
-        // КОГДА КУРСОР В ЗОНЕ ДЛЯ ПЕРЕТАСКИВАНИЙ И ПОЛЬЗОВАТЕЛЬ ОТПУСТИЛ ЗАХВАТ ЭЛЕМЕНТА
-        draggingItem.onpointerup = function (e) {
-            startAction = true;
-            if (clickWithoutMove) {
-                smoothTransition(draggingItem)
-                setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, draggingItem), 10000)
-
-            }
-
-            document.removeEventListener('pointermove', onMouseMove);
-
-            // ЛОГИКА ОБРАБОТКИ ПОПАДАНИЯ НА НУЖНЫЙ БЛОК И НАОБОРОТ
-            if (elemBelow.classList.contains('doll_10_Main')) {
-                let new_shiftX = (e.clientX - elemBelow.getBoundingClientRect().left) - shiftX - 40 + 'px';
-                let new_shiftY = (e.clientY - elemBelow.getBoundingClientRect().top) - shiftY - 40 + 'px';
-                draggingItem.style.left = new_shiftX;
-                draggingItem.style.top = new_shiftY;
-                elemBelow.appendChild(draggingItem);
-                winFigursCounter();
-            } else {
-                smoothTransition(draggingItem)
-                setTimeout(() => changeStylesAndAppend(insideBox, draggingItem), 1000)
-
-            }
-
-            //winFigursCounter();
-
-        };
-
-        function smoothTransition(draggingElem) {
-            // document.body.style.pointerEvents = 'none'
-            elemsdoll_10_.forEach((e) => {
-                e.removeEventListener('pointerdown', mouseDown);
-            });
-            let coordX,
-                coordY
-            draggingElem.classList.add('dragTransition')
-            coordX = elemDraggingStartPlace.getBoundingClientRect().left + elemDraggingStartPlace.getBoundingClientRect().width / 2
-            coordY = elemDraggingStartPlace.getBoundingClientRect().top + elemDraggingStartPlace.getBoundingClientRect().height / 2 + window.pageYOffset
-            draggingElem.style.left = `${coordX}px`
-            draggingElem.style.top = `${coordY}px`
-            setTimeout(() => {
-                draggingElem.classList.remove('dragTransition')
-                // document.body.style.pointerEvents = 'auto'
-                elemsdoll_10_.forEach((e) => {
-                    e.addEventListener('pointerdown', mouseDown);
-                });
-
-            }, 1000)
-        }
-
-
-    };
-
-
+    function mouseleave(item) {
+        item.classList.remove('hovered')
+    }
 
 
     function winFigursCounter() {
