@@ -22,6 +22,7 @@
   let soundOn = false;
   let draggingItem;
   let elemBelow;
+
   let winCount = 0;
 
   const hideElements = [...dollSvg.children].filter((el) =>
@@ -32,16 +33,19 @@
     {
       id: 1,
       src: "Images_1/doll_9_img/bow.svg",
+
       name: "bow",
     },
     {
       id: 2,
       src: "Images_1/doll_9_img/dress.svg",
+
       name: "dress",
     },
     {
       id: 3,
       src: "Images_1/doll_9_img/sandals.svg",
+
       name: "sandals",
     },
   ];
@@ -140,16 +144,12 @@
     changeStyles(draggingElem);
   }
 
-  // функция для размещения элемента в области, куда его перетаскивают
-  function dropAppend(dropPlace, draggingElem) {
-    dropPlace.appendChild(draggingElem);
-    changeStyles(draggingElem);
-  }
-
   function mouseDown(event) {
     if (event.button !== 0) return;
     playSound(captureSound);
+    if (!event.target.classList.contains("doll_9_clothes")) return;
     draggingItem = event.target;
+
     // находим индекс элемента, который берем в списке отрисованных. dragBox - контейнер для перетаскиваемых элементов
     const findIdx = [...divSet.children].findIndex((el) => el === draggingItem);
 
@@ -173,7 +173,8 @@
 
     draggingItem.style.position = "absolute";
     draggingItem.style.zIndex = 1000;
-    document.body.appendChild(draggingItem);
+    // document.body.appendChild(draggingItem);
+    wrapper.appendChild(draggingItem);
 
     moveAt(event.pageX, event.pageY);
 
@@ -206,10 +207,11 @@
       clickWithoutMove = false;
       // moveAt(newLocation.x, newLocation.y);
       moveAt(event.pageX, event.pageY);
-      if (!event.path.includes(draggingItem)) {
+
+      if (!event.composedPath().includes(draggingItem)) {
         window.addEventListener("pointerup", moveOut);
       }
-      if (event.path.includes(draggingItem)) {
+      if (event.composedPath().includes(draggingItem)) {
         window.removeEventListener("pointerup", moveOut);
       }
 
@@ -251,17 +253,19 @@
     function moveOut(e) {
       smoothTransition(draggingItem);
       setTimeout(
-        () => changeStylesAndAppend(elemDraggingStartPlace, draggingItem),
+        // () => changeStylesAndAppend(elemDraggingStartPlace, draggingItem),
+        () => dragAppend(elemDraggingStartPlace, draggingItem, findIdx),
         1000
       );
+
       window.removeEventListener("pointerup", moveOut);
       document.removeEventListener("pointermove", onMouseMove);
     }
 
     // КОГДА КУРСОР В ЗОНЕ ДЛЯ ПЕРЕТАСКИВАНИЙ И ПОЛЬЗОВАТЕЛЬ ОТПУСТИЛ ЗАХВАТ ЭЛЕМЕНТА
     draggingItem.addEventListener("pointerup", onpointerup);
+
     function onpointerup() {
-      // startAction = true;
       if (clickWithoutMove) {
         smoothTransition(draggingItem);
         setTimeout(
@@ -275,27 +279,30 @@
 
       // ЛОГИКА ОБРАБОТКИ ПОПАДАНИЯ НА НУЖНЫЙ БЛОК И НАОБОРОТ
 
-      if (elemBelow.parentElement.id === draggingItem.dataset.name) {
-        elemBelow.parentElement.classList.remove("hide");
-        // draggingItem.classList.add("hide");
-        draggingItem.classList.add("hidden");
-        // changeStylesAndAppend(divSet, draggingItem);
-        dropAppend(divSet, draggingItem);
+      if (elemBelow.parentElement?.id === draggingItem.dataset.name) {
+        addHiddenClasses(elemBelow.parentElement, draggingItem);
+
         playSound(bellSound);
         winCount += 1;
       } else if (
-        elemBelow.parentElement.parentElement.id === draggingItem.dataset.name
+        elemBelow.parentElement?.parentElement?.id === draggingItem.dataset.name
       ) {
-        elemBelow.parentElement.parentElement.classList.remove("hide");
-        // draggingItem.classList.add("hide");
-        draggingItem.classList.add("hidden");
-        // changeStylesAndAppend(divSet, draggingItem);
-        dropAppend(divSet, draggingItem);
+        addHiddenClasses(elemBelow.parentElement.parentElement, draggingItem);
+
+        playSound(bellSound);
+        winCount += 1;
+      } else if (
+        (elemBelow.parentElement?.id === "left-leg" ||
+          elemBelow.parentElement?.id === "right-leg") &&
+        draggingItem.dataset.name === dollSvg.children[6].id
+      ) {
+        addHiddenClasses(dollSvg.children[6], draggingItem);
 
         playSound(bellSound);
         winCount += 1;
       } else {
         smoothTransition(draggingItem);
+
         setTimeout(
           // () => changeStylesAndAppend(elemDraggingStartPlace, draggingItem),
           () => dragAppend(elemDraggingStartPlace, draggingItem, findIdx),
@@ -308,6 +315,12 @@
         playSound(winSound);
       }
       draggingItem.removeEventListener("pointerup", onpointerup);
+    }
+
+    function addHiddenClasses(dropElem, draggingElem) {
+      dropElem.classList.remove("hide");
+
+      draggingElem.classList.add("hidden");
     }
 
     function smoothTransition(draggingElem) {
@@ -329,6 +342,7 @@
         draggingElem.classList.remove("dragTransition");
         document.body.style.pointerEvents = "auto";
       }, 1000);
+      draggingElem.removeEventListener("pointerup", onpointerup);
     }
   }
 
