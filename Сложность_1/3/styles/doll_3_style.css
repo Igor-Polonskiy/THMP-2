@@ -136,6 +136,7 @@
   .onViewdoll_3 {
     opacity: 1;
     transition: all 1s ease;
+    z-index: 10;
   }
   
   .smiledoll_3 {
@@ -161,7 +162,9 @@ height: 250px;
   .hovered{
     stroke: blueviolet;
     stroke-width: 7px;
+    background-color:#333;
   }
+
   .hoveredClicked{
     transition: 2s linear; 
     stroke: black;
