@@ -46,7 +46,7 @@
     ];
 
     play_button.addEventListener('click', playHandlerStart, false);
-   
+
     function playHandlerStart() {
         playSound(click_sound);
         startAction = true;
@@ -80,7 +80,7 @@
         setTimeout(() => {
             divWrapper.classList.remove('doll_7__opacity');
         }, 0);
-        
+
         divWrapper.addEventListener('click', playHandlerInAction, false);
         setTimeout(() => {
             playSound(sound);
@@ -93,7 +93,7 @@
         clothes_wrapper.classList.add('doll_7__opacity')
         setTimeout(() => {
             gameActionWrapper.removeChild(gameActionWrapper.firstChild);
-          
+
             if (numberAction > (clothes.length - 1)) {
                 win = true;
                 winTextSwitcher();
@@ -122,8 +122,9 @@
 
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', () => {
+     
         if (startAction) {
-            gameActionWrapper.removeChild(gameActionWrapper.firstChild);
+            // gameActionWrapper.removeChild(gameActionWrapper.firstChild);
             play_buttonWrapper.classList.remove('doll_7__opacity')
             play_buttonWrapper.style.position = 'relative';
             play_buttonWrapper.style.pointerEvents = 'auto';
@@ -131,6 +132,7 @@
             numberAction = 0;
             startAction = false;
         }
+
         if (win) {
             winTextSwitcher();
         }
@@ -166,6 +168,6 @@
             // well_done.classList.add('hide');
             well_done.classList.remove('onViewdoll_7');
         }
-        
+
     };
 })();
