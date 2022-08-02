@@ -18,7 +18,7 @@
     const soundMouth = document.querySelector('#doll_4_5_dictor')
 
     const contentBlocker = 'doll_4_ContentBlocker';
-    const head = wrapper.querySelector('#head')
+    const head = wrapper.querySelector('#head')  // head **** head_move
     const earleft = wrapper.querySelector('#ear-left')
     const earright = wrapper.querySelector('#ear-right')
     const face = wrapper.querySelector('#face')
@@ -27,17 +27,81 @@
 
 
 
+    const leftLeg = wrapper.querySelector('#left-leg'); //left-leg **** left_leg_move
+    const rightLeg = wrapper.querySelector('#right-leg'); //right-leg **** right_leg_move
+    const sandalsLeft = wrapper.querySelector('#sandals-left_1_'); //sandals_left **** sandals_left_move
+    const sandalsRight = wrapper.querySelector('#sandals-right'); //sandals_right **** sandals_right_move
+
+    const leftHand = wrapper.querySelector('#left-hand'); //left-hand **** left_hand_move
+    const rightHand = wrapper.querySelector('#right-hand'); //right-hand **** right_hand_move
+
+    const bow = wrapper.querySelector('#bow'); //bow **** bow_move
+
+    const closedEyes = wrapper.querySelector('#closed-eyes'); //closed-eyes **** closed_eyes_view
+    const eyelashesLeft = wrapper.querySelector('#eyelashes-left'); //eyelashes_left **** eyelashes_move
+    const eyelashesRight = wrapper.querySelector('#eyelashes-right'); //eyelashes_right **** eyelashes_move
+
+    const topLip = wrapper.querySelector('#top-lip'); //top-lip **** top_lip_move
+    const bottomLip = wrapper.querySelector('#bottom-lip'); //bottom-lip ****  bottom_lip_move
+
+
+
+    function legsMove() {
+        leftLeg.classList.add('left_leg_move')
+        rightLeg.classList.add('right_leg_move')
+        sandalsLeft.classList.add('sandals_left_move')
+        sandalsRight.classList.add('sandals_right_move')
+    }
+
+    function headMove() {
+        head.classList.add('head_move')
+        bow.classList.add('bow_move')
+    }
+
+    function handsMove() {
+        leftHand.classList.add('left_hand_move')
+        rightHand.classList.add('right_hand_move')
+    }
+
+    function eyesMove() {
+        closedEyes.classList.add('closed_eyes_view')
+        eyelashesLeft.classList.add('eyelashes_move')
+        eyelashesRight.classList.add('eyelashes_move')
+    }
+
+    function lipsMove() {
+        topLip.classList.add('top_lip_move')
+        bottomLip.classList.add('bottom_lip_move')
+    }
+
+    function resetMoving() {
+        leftLeg.classList.remove('left_leg_move')
+        rightLeg.classList.remove('right_leg_move')
+        sandalsLeft.classList.remove('sandals_left_move')
+        sandalsRight.classList.remove('sandals_right_move')
+        head.classList.remove('head_move')
+        bow.classList.remove('bow_move')
+        leftHand.classList.remove('left_hand_move')
+        rightHand.classList.remove('right_hand_move')
+        closedEyes.classList.remove('closed_eyes_view')
+        eyelashesLeft.classList.remove('eyelashes_move')
+        eyelashesRight.classList.remove('eyelashes_move')
+        topLip.classList.remove('top_lip_move')
+        bottomLip.classList.remove('bottom_lip_move')
+    }
+
+
     let win = 0
     // hide" draggable="true" ondrop="return false"
     //Head
     head.addEventListener('mouseover', () => {
-        if (!eyes[0].classList.contains('hoveredEye')&&!mouth.classList.contains('hoveredEye')) {
+        if (!eyes[0].classList.contains('hoveredEye') && !mouth.classList.contains('hoveredEye')) {
             head.classList.add('hovered')
             face.classList.add('hovered')
             earleft.classList.add('hovered')
             earright.classList.add('hovered')
-            hair.forEach(item=>item.classList.add('hoveredHair'))
-            
+            hair.forEach(item => item.classList.add('hoveredHair'))
+
         }
     })
     head.addEventListener('mouseenter', () => {
@@ -50,18 +114,19 @@
         face.classList.remove('hovered')
         earleft.classList.remove('hovered')
         earright.classList.remove('hovered')
-        hair.forEach(item=>item.classList.remove('hoveredHair'))
+        hair.forEach(item => item.classList.remove('hoveredHair'))
 
     })
     head.addEventListener('click', (e) => {
-        if (!eyes[0].classList.contains('hoveredEye')&&!mouth.classList.contains('hoveredEye')) {
-            if(!head.classList.contains('selected')){
+        if (!eyes[0].classList.contains('hoveredEye') && !mouth.classList.contains('hoveredEye')) {
+            if (!head.classList.contains('selected')) {
+                headMove();
                 head.classList.add('selected')
                 face.classList.add('selected')
-            win++
-            setTimeout(() => winCheker(), 1500)
+                win++
+                setTimeout(() => winCheker(), 1500)
             }
-            
+
             playSound(soundHead)
         }
 
@@ -86,6 +151,7 @@
         })
         item.addEventListener('click', (e) => {
             if (!item.classList.contains('selected')) {
+                legsMove();
                 legs.forEach(item => {
                     item.classList.add('selected')
                 })
@@ -117,6 +183,7 @@
         })
         item.addEventListener('click', (e) => {
             if (!item.classList.contains('selected')) {
+                handsMove();
                 hands.forEach(item => {
                     item.classList.add('selected')
                 })
@@ -153,6 +220,7 @@
         })
         item.addEventListener('click', (e) => {
             if (!item.classList.contains('selectedEye')) {
+                eyesMove();
                 eyes.forEach(item => {
                     item.classList.add('selectedEye')
                 })
@@ -187,12 +255,13 @@
     })
     mouth.addEventListener('click', (e) => {
         if (!eyes[0].classList.contains('hoveredEye')) {
-            if(!mouth.classList.contains('selectedEye')){
+            if (!mouth.classList.contains('selectedEye')) {
+                lipsMove();
                 mouth.classList.add('selectedEye')
-            win++
-            setTimeout(() => winCheker(), 1500)
+                win++
+                setTimeout(() => winCheker(), 1500)
             }
-            
+
             playSound(soundMouth)
         }
 
@@ -233,6 +302,7 @@
         win = 0
         well_done.classList.remove('onViewdoll_4');
         doll.classList.remove('hide')
+        resetMoving();
     });
 
 
@@ -256,15 +326,17 @@
 
     function winCheker() {
         if (win === 5) {
+
             winTextSwitcher();
         }
     };
 
     function winTextSwitcher() {
-
-        well_done.classList.add('onViewdoll_4');
-        doll.classList.add('hide')
-        soundOn && playSound(soundWin);
+        setTimeout(() => {
+            well_done.classList.add('onViewdoll_4');
+            doll.classList.add('hide')
+            soundOn && playSound(soundWin);
+        }, 2000)
 
     };
 })();
