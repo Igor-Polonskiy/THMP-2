@@ -24,6 +24,7 @@ html {
   align-items: center;
   /* background-color: url(); */
   z-index: 500;
+  box-sizing: border-box;
 }
 
 .doll_10_wrapper {
@@ -33,6 +34,7 @@ html {
   /* min-width: 100%;
 min-height: 100%; */
   cursor: url(../Images_1/doll_10_img/cursor.png), auto;
+  box-sizing: border-box;
 }
 
 .doll_10_Container {
@@ -42,46 +44,66 @@ min-height: 100%; */
   align-items: center;
   width: 100%;
   height: auto;
+  box-sizing: border-box;
 }
 
 .doll_10_Main {
   box-shadow: inset 0 66px 73px -30px #333;
   background-color: #fff;
   background-size: cover;
-  box-sizing: border-box;
   width: 80%;
   position: relative;
-  height: 450px;
+  /* height: 450px; */
+  height: 750px;
+
   border: 40px solid #2eb4ff;
   border-radius: 30px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  /* align-items: flex-end; */
+  align-items: center;
+  box-sizing: border-box;
 }
-
-
 
 .doll_10_insideBox {
   width: 100%;
- display: flex;
- justify-content: space-evenly;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* justify-content: space-evenly; */
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+  gap: 30px;
+  box-sizing: border-box;
 }
 
-.doll_10_item {
+/* .doll_10_item {
   height: 140px;
   transform: scale(1);
   transition: transform 1s ease;
   cursor: url(../Images_1/doll_10_img/cursor.png), auto;
-}
+} */
 
+.doll_10_img {
+  width: calc(100% / 3 - 30px);
+  /* height: 250px; */
+  height: calc(100% / 2 - 30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
 .doll_10_Well_done {
   height: 300px;
   position: absolute;
-  top:0;
+  /* top: 0; */
+  bottom: 7%;
   width: 100%;
   display: flex;
   justify-content: center;
-  
+  z-index: 10;
+  box-sizing: border-box;
 }
 
 .doll_10_Wrong {
@@ -150,23 +172,34 @@ color: #ed1e79; */
 .dragTransition {
   transition: all 1s;
 }
-.doll_10_svg{
-  height: 250px;
-
-}
-.containerdoll_10{
+.doll_10_svg {
+  /* height: 250px; */
   width: 100%;
+  height: 100%;
+  overflow: visible;
+  box-sizing: border-box;
 }
-.hovered{
+.containerdoll_10 {
+  width: 100%;
+
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.hovered {
   stroke: blueviolet;
   stroke-width: 7px;
 }
-.hoveredClicked{
-  transition: 2s linear; 
+.hoveredClicked {
+  transition: 2s linear;
   stroke: black;
   stroke-width: 1px;
 }
-.hoveredDoll{
+.hoveredDoll {
   stroke: blueviolet;
   stroke-width: 7px;
+}
+
+.semi-transparent {
+  opacity: 0.3;
 }
