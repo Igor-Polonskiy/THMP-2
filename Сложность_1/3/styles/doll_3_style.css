@@ -151,26 +151,25 @@
   .dragTransition {
     transition: all 1s;
   }
+
+
   .doll_3_svg{
 height: 250px;
-
-
   }
   .containerdoll_3{
     width: 100%;
   }
-  .hovered{
+  .hovered>:last-child:last-child{
     stroke: blueviolet;
-    stroke-width: 7px;
-    background-color:#333;
+    stroke-width: 10px;
   }
 
-  .hoveredClicked{
+  .hoveredClicked>:last-child:last-child{
     transition: 2s linear; 
     stroke: black;
     stroke-width: 1px;
   }
-  .hoveredDoll{
+  .hoveredDoll>:last-child:last-child{
     stroke: blueviolet;
-    stroke-width: 7px;
+    stroke-width: 10px;
   }

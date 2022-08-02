@@ -190,18 +190,19 @@ html {
   padding: 30px;
   box-sizing: border-box;
 }
-.hovered {
+.hovered>:last-child:last-child{
   stroke: blueviolet;
-  stroke-width: 7px;
+  stroke-width: 10px;
 }
-.hoveredClicked {
-  transition: 2s linear;
+
+.hoveredClicked>:last-child:last-child{
+  transition: 2s linear; 
   stroke: black;
   stroke-width: 1px;
 }
-.hoveredDoll {
+.hoveredDoll>:last-child:last-child{
   stroke: blueviolet;
-  stroke-width: 7px;
+  stroke-width: 10px;
 }
 
 .semi-transparent {
