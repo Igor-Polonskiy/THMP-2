@@ -152,10 +152,14 @@ color: #ed1e79; */
   transition: all 1s;
 }
 #Layer_1{
+  width: inherit;
   max-height: 80%;
 }
+
 #closed-eyes{
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+
 }
 
 .hovered>path:nth-child(2){
@@ -186,4 +190,230 @@ color: #ed1e79; */
 .selectedEye>path:first-child{
   stroke: blue;
   stroke-width: 3px;
+}
+
+
+/* ANIMATION */
+.right_hand_move {
+  animation: hand_move_right 3s ease 2;
+  transform-origin: 45% center;
+}
+@keyframes hand_move_right {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(10deg);
+  }
+  50%{
+    transform: rotate(-10deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
+}
+
+.left_hand_move {
+  animation: hand_move_left 3s ease 2;
+  transform-origin: 55% center;
+}
+@keyframes hand_move_left {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(-10deg);
+  }
+  50%{
+    transform: rotate(10deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
+}
+
+
+.right_leg_move {
+  animation: leg_move_right 3s ease 2;
+  transform-origin: 45% center;
+}
+@keyframes leg_move_right {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(10deg);
+  }
+  50%{
+    transform: rotate(-3deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
+}
+
+.left_leg_move {
+  animation: leg_move_left 3s ease 2;
+  transform-origin: 55% center;
+}
+@keyframes leg_move_left {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(-10deg);
+  }
+  50%{
+    transform: rotate(3deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
+}
+
+.sandals_right_move {
+  animation: sandals_move_right 3s ease 2;
+  transform-origin: 45% center;
+}
+@keyframes sandals_move_right {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(-10deg);
+  }
+  50%{
+    transform: rotate(3deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
+}
+
+.sandals_left_move {
+  animation: sandals_move_left 3s ease 2;
+  transform-origin: 55% center;
+}
+@keyframes sandals_move_left {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
+}
+
+
+.top_lip_move {
+  animation: lip_move_top 3s ease 3;
+  transform-origin: 45% center;
+}
+@keyframes lip_move_top {
+  0% {
+		transform: translateY(0);
+	}
+  25% {
+    transform: translateY(-2px);
+  }
+  50%{
+    transform: translateY(-4px);
+  }
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.bottom_lip_move {
+  animation: lip_move_bottom 3s ease 3;
+  transform-origin: 55% center;
+}
+@keyframes lip_move_bottom {
+  0% {
+		transform: translateY(0);
+	}
+  25% {
+    transform:translateY(2px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+	100% {
+		transform: translateY(0);
+	}
+}
+
+
+.closed_eyes_view {
+  animation: closed_eyes_view 2s ease 3;
+}
+
+@keyframes closed_eyes_view {
+  0% {
+		opacity: 0;
+	}
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.eyelashes_move {
+  animation: eyelashes_view 2s ease 3;
+}
+@keyframes eyelashes_view {
+  0% {
+		opacity: 1;
+	}
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.head_move {
+  animation: head_move 3s ease 2;
+  transform-origin: 50% 40%;
+}
+@keyframes head_move {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
+}
+
+.bow_move {
+  animation: bow_move 3s ease 2;
+  transform-origin: 50% 40%;
+}
+@keyframes bow_move {
+  0% {
+		transform: rotate(0deg);
+	}
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+	100% {
+		transform: rotate(0);
+	}
 }
