@@ -19,8 +19,11 @@
 
     const contentBlocker = 'doll_4_ContentBlocker';
     const head = wrapper.querySelector('#head')
+    const earleft = wrapper.querySelector('#ear-left')
+    const earright = wrapper.querySelector('#ear-right')
     const face = wrapper.querySelector('#face')
     const mouth = wrapper.querySelector('#mouth')
+    const hair = wrapper.querySelectorAll('.hair')
 
 
 
@@ -31,6 +34,10 @@
         if (!eyes[0].classList.contains('hoveredEye')&&!mouth.classList.contains('hoveredEye')) {
             head.classList.add('hovered')
             face.classList.add('hovered')
+            earleft.classList.add('hovered')
+            earright.classList.add('hovered')
+            hair.forEach(item=>item.classList.add('hoveredHair'))
+            
         }
     })
     head.addEventListener('mouseenter', () => {
@@ -41,6 +48,10 @@
     head.addEventListener('mouseout', () => {
         head.classList.remove('hovered')
         face.classList.remove('hovered')
+        earleft.classList.remove('hovered')
+        earright.classList.remove('hovered')
+        hair.forEach(item=>item.classList.remove('hoveredHair'))
+
     })
     head.addEventListener('click', (e) => {
         if (!eyes[0].classList.contains('hoveredEye')&&!mouth.classList.contains('hoveredEye')) {

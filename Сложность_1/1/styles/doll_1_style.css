@@ -164,7 +164,7 @@ color: #ed1e79; */
   
 }
 .hovered>path:first-child{
-  fill:grey;
+  fill:darkorange;
 }
 .selected>path:last-child{
   stroke: blue;
@@ -176,7 +176,7 @@ color: #ed1e79; */
   stroke-width: 3px;
 }
 .hoveredEye>path:nth-child(2){
- fill: grey;
+ fill: darkorange;
 }
 .selectedEye>path:first-child{
   stroke: blue;
