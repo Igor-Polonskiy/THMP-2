@@ -36,6 +36,7 @@
         doll.classList.remove('doll_2_rotate')
         eyes.style.display = 'none'
         bed.removeEventListener('pointerdown', bedShake)
+        bed.classList.remove('hidden')
 
     }
     // Обработчик кнопки "Полный экран"
@@ -91,7 +92,11 @@
         bed.src = 'Images_1/doll_2_img/doll-sleeping.gif'
         playSound(soundSong)
         bed.removeEventListener('pointerdown', bedShake)
-        well_done.classList.add('onViewdoll_2');
+        setTimeout(() => {
+            well_done.classList.add('onViewdoll_2')
+            bed.classList.add('hidden')
+        }, 1000)
+
     }
 
     function mouseDown(event) {
@@ -209,8 +214,8 @@
                 playSound(soundPut)
                 bed.addEventListener('pointerdown', bedShake)
             } else {
-                    smoothTransition(draggingItem)
-                    setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, doll), 1000)
+                smoothTransition(draggingItem)
+                setTimeout(() => changeStylesAndAppend(elemDraggingStartPlace, doll), 1000)
 
             }
             doll.removeEventListener('pointerup', onpointerup)

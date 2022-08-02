@@ -202,4 +202,5 @@ color: #ed1e79; */
 
 .semi-transparent {
   opacity: 0.3;
+  pointer-events: none;
 }

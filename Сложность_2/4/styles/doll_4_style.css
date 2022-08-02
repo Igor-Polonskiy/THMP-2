@@ -179,6 +179,9 @@ color: #ed1e79; */
 .hoveredEye>path:nth-child(2){
   fill: darkorange;
  }
+.hoveredEye>path:nth-child(3){
+  fill: darkorange;
+ }
 
 .selectedEye>path:first-child{
   stroke: blue;

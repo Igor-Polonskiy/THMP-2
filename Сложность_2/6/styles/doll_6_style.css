@@ -206,4 +206,5 @@ html {
 
 .semi-transparent {
   opacity: 0.3;
+  pointer-events: none;
 }

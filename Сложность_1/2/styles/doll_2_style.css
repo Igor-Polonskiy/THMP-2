@@ -145,11 +145,7 @@ html {
     border-radius: 30%;
     cursor: url(../Images_1/doll_2_img/cursor.png), auto;
   }
-  
-  .hide {
-    display: none;
-  }
-  
+
   
   
   .doll_2_Well_done {
@@ -210,6 +206,11 @@ html {
   }
   .hide {
     opacity: 0;
+    transition: all 1s ease;
+    pointer-events: none;
+  }
+  .hidden{
+    opacity: 0.3;
     transition: all 1s ease;
     pointer-events: none;
   }

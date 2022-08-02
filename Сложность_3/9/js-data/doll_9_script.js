@@ -70,6 +70,7 @@
 
     wellDone.classList.remove("onViewdoll_9");
     wellDone.classList.add("fadedoll_9");
+    dollSvg.classList.remove('semi-transparent')
   }
   // Обработчик кнопки "Полный экран"
 
@@ -311,8 +312,12 @@
       }
 
       if (winCount === dollsClothes.length) {
+       setTimeout(()=>{
         winTextSwitcherdoll_9();
+        dollSvg.classList.add('semi-transparent')
         playSound(winSound);
+       },500) 
+        
       }
       draggingItem.removeEventListener("pointerup", onpointerup);
     }

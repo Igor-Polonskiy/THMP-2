@@ -183,3 +183,7 @@ html {
 .dragTransition {
   transition: all 1s;
 }
+.semi-transparent {
+  opacity: 0.3;
+  pointer-events: none;
+}
