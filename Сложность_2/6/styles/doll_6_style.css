@@ -178,7 +178,7 @@ html {
 }
 .doll_6_svg {
   /* height: 250px; */
-
+  border-radius:30px;
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -190,9 +190,12 @@ html {
   padding: 30px;
   box-sizing: border-box;
 }
+.hovered{
+  background-color:green;
+}
 .hovered>:last-child:last-child{
-  stroke: blueviolet;
-  stroke-width: 10px;
+  stroke: black;
+  stroke-width: 14px;
 }
 
 .hoveredClicked>:last-child:last-child{
@@ -200,11 +203,17 @@ html {
   stroke: black;
   stroke-width: 1px;
 }
-.hoveredDoll>:last-child:last-child{
-  stroke: blueviolet;
-  stroke-width: 10px;
+.hoveredClicked{
+  background-color:white;
+  transition: 2s linear;
 }
-
+.hoveredDoll>:last-child:last-child{
+  stroke: black;
+  stroke-width: 14px;
+}
+.hoveredDoll{
+  background-color:green;
+}
 .semi-transparent {
   opacity: 0.3;
   pointer-events: none;

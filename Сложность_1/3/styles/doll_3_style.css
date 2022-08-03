@@ -152,16 +152,20 @@
     transition: all 1s;
   }
 
-
+  
   .doll_3_svg{
-height: 250px;
+    height: 250px;
+    border-radius:30px;
   }
   .containerdoll_3{
     width: 100%;
   }
+  .hovered{
+    background-color:green;
+  }
   .hovered>:last-child:last-child{
-    stroke: blueviolet;
-    stroke-width: 10px;
+    stroke: black;
+    stroke-width: 14px;
   }
 
   .hoveredClicked>:last-child:last-child{
@@ -169,7 +173,14 @@ height: 250px;
     stroke: black;
     stroke-width: 1px;
   }
+  .hoveredClicked{
+    background-color:white;
+    transition: 2s linear;
+  }
   .hoveredDoll>:last-child:last-child{
-    stroke: blueviolet;
-    stroke-width: 10px;
+    stroke: black;
+    stroke-width: 14px;
+  }
+  .hoveredDoll{
+    background-color:green;
   }
