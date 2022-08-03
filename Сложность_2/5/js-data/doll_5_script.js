@@ -24,22 +24,22 @@
     {
       id: 1,
       name: "doll_stands",
-      src: "Images_1/doll_5_img/walk.gif",
+      src: "Images_1/doll_img/walk.gif",
     },
     {
       id: 2,
       name: "doll-sitting",
-      src: "Images_1/doll_5_img/doll-sitting-on-chair.png",
+      src: "Images_1/doll_img/doll-sitting-on-chair.png",
     },
     {
       id: 3,
       name: "doll-eating",
-      src: "Images_1/doll_5_img/eat.gif",
+      src: "Images_1/doll_img/eat.gif",
     },
     {
       id: 4,
       name: "doll-sleeping",
-      src: "Images_1/doll_5_img/sleep.gif",
+      src: "Images_1/doll_img/sleep.gif",
     },
   ];
 
@@ -121,9 +121,9 @@
   function soundChanger() {
     soundOn = !soundOn;
     if (soundOn) {
-      soundBtn.src = "Images_1/doll_5_img/onSound.svg";
+      soundBtn.src = "Images_1/doll_img/onSound.svg";
     } else {
-      soundBtn.src = "Images_1/doll_5_img/mute.svg";
+      soundBtn.src = "Images_1/doll_img/mute.svg";
     }
   }
 

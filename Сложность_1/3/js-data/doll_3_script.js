@@ -58,9 +58,9 @@
     function soundChanger() {
         soundOn = !soundOn;
         if (soundOn) {
-            soundBtn.src = "Images_1/doll_3_img/onSound.svg";
+            soundBtn.src = "Images_1/doll_img/onSound.svg";
         } else {
-            soundBtn.src = "Images_1/doll_3_img/mute.svg";
+            soundBtn.src = "Images_1/doll_img/mute.svg";
         }
     }
 

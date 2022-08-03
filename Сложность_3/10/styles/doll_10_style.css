@@ -6,7 +6,7 @@
 }
 
 html {
-  background: url(../Images_1/doll_10_img/background.jpg) center no-repeat;
+  background: url(../Images_1/doll_img/background.jpg) center no-repeat;
   width: 100%;
   height: 100%;
   /* position: relative; */
@@ -33,7 +33,7 @@ html {
   justify-content: center;
   /* min-width: 100%;
 min-height: 100%; */
-  cursor: url(../Images_1/doll_10_img/cursor.png), auto;
+  cursor: url(../Images_1/doll_img/cursor.png), auto;
   box-sizing: border-box;
 }
 
@@ -82,10 +82,10 @@ min-height: 100%; */
   height: 140px;
   transform: scale(1);
   transition: transform 1s ease;
-  cursor: url(../Images_1/doll_10_img/cursor.png), auto;
+  cursor: url(../Images_1/doll_img/cursor.png), auto;
 } */
 
-.doll_10_img {
+.doll_img {
   width: calc(100% / 3 - 30px);
   /* height: 250px; */
   height: calc(100% / 2 - 30px);
@@ -120,7 +120,7 @@ color: #ed1e79; */
   z-index: 5;
   background-color: #ed1e79;
   border-radius: 30%;
-  cursor: url(../Images_1/doll_10_img/cursor.png), auto;
+  cursor: url(../Images_1/doll_img/cursor.png), auto;
 }
 
 .doll_10_MuteSound {
@@ -129,7 +129,7 @@ color: #ed1e79; */
   z-index: 5;
   background-color: #ed1e79;
   border-radius: 30%;
-  cursor: url(../Images_1/doll_10_img/cursor.png), auto;
+  cursor: url(../Images_1/doll_img/cursor.png), auto;
 }
 
 .doll_10_ResetBtn {
@@ -140,7 +140,7 @@ color: #ed1e79; */
   z-index: 5;
   background-color: #ed1e79;
   border-radius: 30%;
-  cursor: url(../Images_1/doll_10_img/cursor.png), auto;
+  cursor: url(../Images_1/doll_img/cursor.png), auto;
 }
 
 .hide {

@@ -30,7 +30,7 @@
     resetBtn.addEventListener('click', reset);
 
     function reset() {
-        bed.src = 'Images_1/doll_2_img/crib.png'
+        bed.src = 'Images_1/doll_img/crib.png'
         doll.classList.remove('hide')
         well_done.classList.remove('onViewdoll_2');
         doll.classList.remove('doll_2_rotate')
@@ -63,10 +63,10 @@
     function soundChanger() {
         soundOn = !soundOn;
         if (soundOn) {
-            soundBtn.src = "Images_1/doll_2_img/onSound.svg";
+            soundBtn.src = "Images_1/doll_img/onSound.svg";
         }
         else {
-            soundBtn.src = "Images_1/doll_2_img/mute.svg";
+            soundBtn.src = "Images_1/doll_img/mute.svg";
         }
     }
 
@@ -89,7 +89,7 @@
     let draggingItem;
     let elemBelow;
     function bedShake(e) {
-        bed.src = 'Images_1/doll_2_img/doll-sleeping.gif'
+        bed.src = 'Images_1/doll_img/doll-sleeping.gif'
         playSound(soundSong)
         bed.removeEventListener('pointerdown', bedShake)
         setTimeout(() => {
@@ -104,7 +104,7 @@
         playSound(soundTake)
         if (event.button !== 0) return;
         draggingItem = doll;
-        draggingItem.style.cursor = "url(Images_1/doll_2_img/cursor.png), auto";
+        draggingItem.style.cursor = "url(Images_1/doll_img/cursor.png), auto";
         const elemDraggingBanBorder = container;//элемент за границы которого запрещён вылет перетаскиваемой фигуры
         const elemDraggingStartPlace = divSet;  //элемент первоначального расположения перетаскиваемых фигур (стартовое состояние)
 
@@ -210,7 +210,7 @@
             if (elemBelow.classList.contains('doll_2_bed')) {
                 doll.classList.add('hide')
                 changeStylesAndAppend(elemDraggingStartPlace, draggingItem);
-                bed.src = 'Images_1/doll_2_img/doll-sleeping-cover.png'
+                bed.src = 'Images_1/doll_img/doll-sleeping-cover.png'
                 playSound(soundPut)
                 bed.addEventListener('pointerdown', bedShake)
             } else {

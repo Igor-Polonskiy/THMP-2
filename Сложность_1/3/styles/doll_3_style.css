@@ -6,7 +6,7 @@
   }
   
   html {
-    background: url(../Images_1/doll_3_img/background.jpg) center no-repeat;
+    background: url(../Images_1/doll_img/background.jpg) center no-repeat;
     width: 100%;
     height: 100%;
     /* position: relative; */
@@ -32,7 +32,7 @@
     justify-content: center;
     /* min-width: 100%;
   min-height: 100%; */
-    cursor: url(../Images_1/doll_3_img/cursor.png), auto;
+    cursor: url(../Images_1/doll_img/cursor.png), auto;
   }
   
   .doll_3_Container {
@@ -71,7 +71,7 @@
     height: 140px;
     transform: scale(1);
     transition: transform 1s ease;
-    cursor: url(../Images_1/doll_3_img/cursor.png), auto;
+    cursor: url(../Images_1/doll_img/cursor.png), auto;
   }
   
   .doll_3_Well_done {
@@ -98,7 +98,7 @@
     z-index: 5;
     background-color: #ed1e79;
     border-radius: 30%;
-    cursor: url(../Images_1/doll_3_img/cursor.png), auto;
+    cursor: url(../Images_1/doll_img/cursor.png), auto;
   }
   
   .doll_3_MuteSound {
@@ -107,7 +107,7 @@
     z-index: 5;
     background-color: #ed1e79;
     border-radius: 30%;
-    cursor: url(../Images_1/doll_3_img/cursor.png), auto;
+    cursor: url(../Images_1/doll_img/cursor.png), auto;
   }
   
   .doll_3_ResetBtn {
@@ -118,7 +118,7 @@
     z-index: 5;
     background-color: #ed1e79;
     border-radius: 30%;
-    cursor: url(../Images_1/doll_3_img/cursor.png), auto;
+    cursor: url(../Images_1/doll_img/cursor.png), auto;
   }
   
   .hide {

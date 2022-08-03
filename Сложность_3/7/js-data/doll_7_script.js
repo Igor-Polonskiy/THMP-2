@@ -30,17 +30,17 @@
     const clothes = [
         {
             id: 'bant_doll_7',
-            src: 'Images_1/doll_7_img/bow.svg',
+            src: 'Images_1/doll_img/bow.svg',
             sound: bantOff_sound
         },
         {
             id: 'dress_doll_7',
-            src: 'Images_1/doll_7_img/dress.svg',
+            src: 'Images_1/doll_img/dress.svg',
             sound: dressOff_sound
         },
         {
             id: 'shoes_doll_7',
-            src: 'Images_1/doll_7_img/sandals.svg',
+            src: 'Images_1/doll_img/sandals.svg',
             sound: shoesOff_sound
         }
     ];
@@ -110,9 +110,9 @@
     function soundChanger() {
         soundOn = !soundOn;
         if (soundOn) {
-            soundBtn.src = "Images_1/doll_7_img/onSound.svg";
+            soundBtn.src = "Images_1/doll_img/onSound.svg";
         } else {
-            soundBtn.src = "Images_1/doll_7_img/mute.svg";
+            soundBtn.src = "Images_1/doll_img/mute.svg";
         }
     }
 

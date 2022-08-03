@@ -32,19 +32,19 @@
   const dollsClothes = [
     {
       id: 1,
-      src: "Images_1/doll_9_img/bow.svg",
+      src: "Images_1/doll_img/bow.svg",
 
       name: "bow",
     },
     {
       id: 2,
-      src: "Images_1/doll_9_img/dress.svg",
+      src: "Images_1/doll_img/dress.svg",
 
       name: "dress",
     },
     {
       id: 3,
-      src: "Images_1/doll_9_img/sandals.svg",
+      src: "Images_1/doll_img/sandals.svg",
 
       name: "sandals",
     },
@@ -113,9 +113,9 @@
   function soundChanger() {
     soundOn = !soundOn;
     if (soundOn) {
-      soundBtn.src = "Images_1/doll_9_img/onSound.svg";
+      soundBtn.src = "Images_1/doll_img/onSound.svg";
     } else {
-      soundBtn.src = "Images_1/doll_9_img/mute.svg";
+      soundBtn.src = "Images_1/doll_img/mute.svg";
     }
   }
 
@@ -154,7 +154,7 @@
     // находим индекс элемента, который берем в списке отрисованных. dragBox - контейнер для перетаскиваемых элементов
     const findIdx = [...divSet.children].findIndex((el) => el === draggingItem);
 
-    draggingItem.style.cursor = "url(Images_1/doll_9_img/cursor.png), auto";
+    draggingItem.style.cursor = "url(Images_1/doll_img/cursor.png), auto";
     const elemDraggingBanBorder = container; //элемент за границы которого запрещён вылет перетаскиваемой фигуры
     const elemDraggingStartPlace = divSet; //элемент первоначального расположения перетаскиваемых фигур (стартовое состояние)
 

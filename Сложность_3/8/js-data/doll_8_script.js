@@ -25,25 +25,25 @@
     {
       id: 1,
       name: "playBtn",
-      src: "Images_1/doll_8_img/buttons-play.svg",
+      src: "Images_1/doll_img/buttons-play.svg",
       sound: btnSound,
     },
     {
       id: 2,
       name: "doll-bow",
-      src: "Images_1/doll_8_img/bow.svg",
+      src: "Images_1/doll_img/bow.svg",
       sound: bowSound,
     },
     {
       id: 3,
       name: "doll-dress",
-      src: "Images_1/doll_8_img/dress.svg",
+      src: "Images_1/doll_img/dress.svg",
       sound: dressSound,
     },
     {
       id: 4,
       name: "doll-shoes",
-      src: "Images_1/doll_8_img/sandals.svg",
+      src: "Images_1/doll_img/sandals.svg",
       sound: shoesSound,
     },
   ];
@@ -97,9 +97,9 @@
   function soundChanger() {
     soundOn = !soundOn;
     if (soundOn) {
-      soundBtn.src = "Images_1/doll_8_img/onSound.svg";
+      soundBtn.src = "Images_1/doll_img/onSound.svg";
     } else {
-      soundBtn.src = "Images_1/doll_8_img/mute.svg";
+      soundBtn.src = "Images_1/doll_img/mute.svg";
     }
   }
 
