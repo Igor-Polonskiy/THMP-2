@@ -293,7 +293,8 @@
         playSound(bellSound);
         winCount += 1;
       } else if (
-        (elemBelow.parentElement?.id === "left-leg" ||
+        (elemBelow.classList.contains('hitBox_sandals') ||
+          elemBelow.parentElement?.id === "left-leg" ||
           elemBelow.parentElement?.id === "right-leg") &&
         draggingItem.dataset.name === dollSvg.children[6].id
       ) {
