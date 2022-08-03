@@ -187,3 +187,12 @@ html {
   opacity: 0.3;
   pointer-events: none;
 }
+
+
+.hitBox_sandals {
+  top: 76%;
+  position: absolute;
+  width: 250px;
+  height: 180px;
+  left: calc(-64px + 25%);
+}
