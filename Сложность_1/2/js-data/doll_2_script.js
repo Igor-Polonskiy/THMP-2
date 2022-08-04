@@ -21,6 +21,9 @@
     const soundSong = document.querySelector('#doll_2_3_mmr')
     const well_done = wrapper.querySelector('.doll_2_Well_done')
     const eyes = wrapper.querySelector('.doll_2_eyes')
+    const bed1 = wrapper.querySelector('.doll_2_sleeping_1')
+    const bed2 = wrapper.querySelector('.doll_2_sleeping_2')
+    const bed3 = wrapper.querySelector('.doll_2_sleeping_3')
 
 
     // Собирается элементы в переменные, создаются вспомогательные переменные
@@ -30,7 +33,9 @@
     resetBtn.addEventListener('click', reset);
 
     function reset() {
-        bed.src = 'Images_1/doll_img/crib.png'
+        bed3.classList.add('doll_2_nodisplay')
+        bed2.classList.add('doll_2_nodisplay')
+        bed1.classList.remove('doll_2_nodisplay')
         doll.classList.remove('hide')
         well_done.classList.remove('onViewdoll_2');
         doll.classList.remove('doll_2_rotate')
@@ -89,7 +94,8 @@
     let draggingItem;
     let elemBelow;
     function bedShake(e) {
-        bed.src = 'Images_1/doll_img/doll-sleeping.gif'
+        bed2.classList.add('doll_2_nodisplay')
+        bed3.classList.remove('doll_2_nodisplay')
         playSound(soundSong)
         bed.removeEventListener('pointerdown', bedShake)
         setTimeout(() => {
@@ -168,7 +174,7 @@
             draggingItem.hidden = false;
 
             if (!elemBelow) return;
-            if (elemBelow.classList.contains('doll_2_bed')) {
+            if (elemBelow.classList.contains('doll_2_sleeping_1')) {
                 draggingItem.classList.add('doll_2_rotate')
                 eyes.style.display = 'inherit'
             } else {
@@ -207,10 +213,11 @@
             document.removeEventListener('pointermove', onMouseMove);
 
             // ЛОГИКА ОБРАБОТКИ ПОПАДАНИЯ НА НУЖНЫЙ БЛОК И НАОБОРОТ
-            if (elemBelow.classList.contains('doll_2_bed')) {
+            if (elemBelow.classList.contains('doll_2_sleeping_1')) {
                 doll.classList.add('hide')
                 changeStylesAndAppend(elemDraggingStartPlace, draggingItem);
-                bed.src = 'Images_1/doll_img/doll-sleeping-cover.png'
+                bed1.classList.add('doll_2_nodisplay')
+                bed2.classList.remove('doll_2_nodisplay')
                 playSound(soundPut)
                 bed.addEventListener('pointerdown', bedShake)
             } else {

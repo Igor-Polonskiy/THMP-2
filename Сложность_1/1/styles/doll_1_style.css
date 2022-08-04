@@ -24,6 +24,8 @@ html {
   align-items: center;
   /* background-color: url(); */
   z-index: 500;
+  background: url(../Images_1/doll_img/background.jpg) center no-repeat;
+
 }
 
 .doll_1_wrapper {
@@ -33,6 +35,7 @@ html {
   /* min-width: 100%;
 min-height: 100%; */
   cursor: url(../Images_1/doll_img/cursor.png), auto;
+
 }
 
 .doll_1_Container {
@@ -122,7 +125,7 @@ color: #ed1e79; */
   cursor: url(../Images_1/doll_img/cursor.png), auto;
 }
 
-.hide {
+.doll_1_hide {
   opacity: 0.3;
   transition: all 1s ease;
   pointer-events: none;

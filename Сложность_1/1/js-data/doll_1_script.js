@@ -122,6 +122,7 @@
     }
 
     function playSound(audio) {
+        audio.currentTime = 0
         soundOn && audio.play();
     }
 
@@ -139,7 +140,7 @@
         })
         win = 0
         well_done.classList.remove('onViewdoll_1');
-        doll.classList.remove('hide')
+        doll.classList.remove('doll_1_hide')
     });
 
 
@@ -170,7 +171,7 @@
     function winTextSwitcher() {
 
         well_done.classList.add('onViewdoll_1');
-        doll.classList.add('hide')
+        doll.classList.add('doll_1_hide')
         soundOn && playSound(soundWin);
 
     };

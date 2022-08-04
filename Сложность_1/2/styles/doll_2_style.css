@@ -217,4 +217,7 @@ html {
   .doll_2_rotate{
     transform: rotate(90deg);
   }
+  .doll_2_nodisplay{
+    display: none;
+  }
 
