@@ -122,7 +122,7 @@ color: #ed1e79; */
   cursor: url(../Images_1/doll_img/cursor.png), auto;
 }
 
-.hide {
+.doll_4_hide {
   opacity: 0.3;
   transition: all 1s ease;
   pointer-events: none;
@@ -156,38 +156,38 @@ color: #ed1e79; */
   max-height: 80%;
 }
 
-#closed-eyes{
+#doll_4_closed-eyes{
   opacity: 0;
   pointer-events: none;
 
 }
 
-.hovered>path:nth-child(2){
+.doll_4_hovered>path:nth-child(2){
   stroke: red;
   stroke-width: 2px;
 }
-.hovered>path:first-child{
+.doll_4_hovered>path:first-child{
   fill:darkorange;
 }
-.hoveredHair>path:first-child{
+.doll_4_hoveredHair>path:first-child{
   fill:darkorange;
 }
-.selected>path:nth-child(2){
+.doll_4_selected>path:nth-child(2){
   stroke: blue;
   stroke-width: 2px;
 }
-.hoveredEye>path:first-child{
+.doll_4_hoveredEye>path:first-child{
   stroke: red;
   stroke-width: 3px;
 }
-.hoveredEye>path:nth-child(2){
+.doll_4_hoveredEye>path:nth-child(2){
   fill: darkorange;
  }
-.hoveredEye>path:nth-child(3){
+.doll_4_hoveredEye>path:nth-child(3){
   fill: darkorange;
  }
 
-.selectedEye>path:first-child{
+.doll_4_selectedEye>path:first-child{
   stroke: blue;
   stroke-width: 3px;
 }

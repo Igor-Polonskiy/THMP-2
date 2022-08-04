@@ -121,7 +121,7 @@
     cursor: url(../Images_1/doll_img/cursor.png), auto;
   }
   
-  .hide {
+  .doll_3_hide {
     opacity: 0.3;
     transition: all 1s ease;
     pointer-events: none;

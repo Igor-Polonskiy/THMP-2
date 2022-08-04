@@ -162,27 +162,27 @@ color: #ed1e79; */
   display: none;
 }
 
-.hovered>path:last-child{
+.doll_1_hovered>path:last-child{
   stroke: red;
   stroke-width: 2px;
   
 }
-.hovered>path:first-child{
+.doll_1_hovered>path:first-child{
   fill:darkorange;
 }
-.selected>path:last-child{
+.doll_1_selected>path:last-child{
   stroke: blue;
   stroke-width: 2px;
   
 }
-.hoveredEye>path:first-child{
+.doll_1_hoveredEye>path:first-child{
   stroke: red;
   stroke-width: 3px;
 }
-.hoveredEye>path:nth-child(2){
+.doll_1_hoveredEye>path:nth-child(2){
  fill: darkorange;
 }
-.selectedEye>path:first-child{
+.doll_1_selectedEye>path:first-child{
   stroke: blue;
   stroke-width: 3px;
 }

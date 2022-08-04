@@ -74,10 +74,10 @@
 
   function imageChanger(e) {
     if (Number(e.target.parentElement.dataset.id) <= 3) {
-      e.target.parentElement.classList.add("hide");
+      e.target.parentElement.classList.add("doll_5_hide");
       allActionsBlocks[
         Number(e.target.parentElement.dataset.id)
-      ].classList.remove("hide");
+      ].classList.remove("doll_5_hide");
     }
     if (soundOn) {
       resetSound(currentSound);
@@ -110,12 +110,12 @@
   resetBtn.addEventListener("click", () => {
     allActionsBlocks.forEach((el, index) => {
       if (index === 0) {
-        el.classList.remove("hide");
+        el.classList.remove("doll_5_hide");
       } else if (index === allActionsBlocks.length - 1) {
-        el.classList.add("hide");
+        el.classList.add("doll_5_hide");
         el.classList.remove("semi-transparent");
       } else {
-        el.classList.add("hide");
+        el.classList.add("doll_5_hide");
       }
     });
     resetSound(currentSound);

@@ -37,7 +37,7 @@
 
     const bow = wrapper.querySelector('#bow'); //bow **** bow_move
 
-    const closedEyes = wrapper.querySelector('#closed-eyes'); //closed-eyes **** closed_eyes_view
+    const closedEyes = wrapper.querySelector('#doll_4_closed-eyes'); //closed-eyes **** closed_eyes_view
     const eyelashesLeft = wrapper.querySelector('#eyelashes-left'); //eyelashes_left **** eyelashes_move
     const eyelashesRight = wrapper.querySelector('#eyelashes-right'); //eyelashes_right **** eyelashes_move
 
@@ -92,37 +92,37 @@
 
 
     let win = 0
-    // hide" draggable="true" ondrop="return false"
+    // doll_4_hide" draggable="true" ondrop="return false"
     //Head
     head.addEventListener('mouseover', () => {
-        if (!eyes[0].classList.contains('hoveredEye') && !mouth.classList.contains('hoveredEye')) {
-            head.classList.add('hovered')
-            face.classList.add('hovered')
-            earleft.classList.add('hovered')
-            earright.classList.add('hovered')
-            hair.forEach(item => item.classList.add('hoveredHair'))
+        if (!eyes[0].classList.contains('doll_4_hoveredEye') && !mouth.classList.contains('doll_4_hoveredEye')) {
+            head.classList.add('doll_4_hovered')
+            face.classList.add('doll_4_hovered')
+            earleft.classList.add('doll_4_hovered')
+            earright.classList.add('doll_4_hovered')
+            hair.forEach(item => item.classList.add('doll_4_hoveredHair'))
 
         }
     })
     head.addEventListener('mouseenter', () => {
-        if (!head.classList.contains('selected')) {
+        if (!head.classList.contains('doll_4_selected')) {
             playSound(soundRing)
         }
     })
     head.addEventListener('mouseout', () => {
-        head.classList.remove('hovered')
-        face.classList.remove('hovered')
-        earleft.classList.remove('hovered')
-        earright.classList.remove('hovered')
-        hair.forEach(item => item.classList.remove('hoveredHair'))
+        head.classList.remove('doll_4_hovered')
+        face.classList.remove('doll_4_hovered')
+        earleft.classList.remove('doll_4_hovered')
+        earright.classList.remove('doll_4_hovered')
+        hair.forEach(item => item.classList.remove('doll_4_hoveredHair'))
 
     })
     head.addEventListener('click', (e) => {
-        if (!eyes[0].classList.contains('hoveredEye') && !mouth.classList.contains('hoveredEye')) {
-            if (!head.classList.contains('selected')) {
+        if (!eyes[0].classList.contains('doll_4_hoveredEye') && !mouth.classList.contains('doll_4_hoveredEye')) {
+            if (!head.classList.contains('doll_4_selected')) {
                 headMove();
-                head.classList.add('selected')
-                face.classList.add('selected')
+                head.classList.add('doll_4_selected')
+                face.classList.add('doll_4_selected')
                 win++
                 setTimeout(() => winCheker(), 1500)
             }
@@ -136,24 +136,24 @@
     legs.forEach(item => {
         item.addEventListener('mouseover', (e) => {
             legs.forEach(item => {
-                item.classList.add('hovered')
+                item.classList.add('doll_4_hovered')
             })
         })
         item.addEventListener('mouseenter', () => {
-            if (!item.classList.contains('selected')) {
+            if (!item.classList.contains('doll_4_selected')) {
                 playSound(soundRing)
             }
         })
         item.addEventListener('mouseout', (e) => {
             legs.forEach(item => {
-                item.classList.remove('hovered')
+                item.classList.remove('doll_4_hovered')
             })
         })
         item.addEventListener('click', (e) => {
-            if (!item.classList.contains('selected')) {
+            if (!item.classList.contains('doll_4_selected')) {
                 legsMove();
                 legs.forEach(item => {
-                    item.classList.add('selected')
+                    item.classList.add('doll_4_selected')
                 })
                 win++
                 setTimeout(() => winCheker(), 1500)
@@ -168,24 +168,24 @@
     hands.forEach(item => {
         item.addEventListener('mouseover', (e) => {
             hands.forEach(item => {
-                item.classList.add('hovered')
+                item.classList.add('doll_4_hovered')
             })
         })
         item.addEventListener('mouseenter', () => {
-            if (!item.classList.contains('selected')) {
+            if (!item.classList.contains('doll_4_selected')) {
                 playSound(soundRing)
             }
         })
         item.addEventListener('mouseout', (e) => {
             hands.forEach(item => {
-                item.classList.remove('hovered')
+                item.classList.remove('doll_4_hovered')
             })
         })
         item.addEventListener('click', (e) => {
-            if (!item.classList.contains('selected')) {
+            if (!item.classList.contains('doll_4_selected')) {
                 handsMove();
                 hands.forEach(item => {
-                    item.classList.add('selected')
+                    item.classList.add('doll_4_selected')
                 })
 
                 win++
@@ -201,28 +201,28 @@
     eyes.forEach(item => {
         item.addEventListener('mouseover', (e) => {
             eyes.forEach(item => {
-                item.classList.add('hoveredEye')
+                item.classList.add('doll_4_hoveredEye')
             })
 
         })
         item.addEventListener('mouseenter', () => {
-            if (!item.classList.contains('selectedEye')) {
+            if (!item.classList.contains('doll_4_selectedEye')) {
                 playSound(soundRing)
             }
         })
         item.addEventListener('mouseleave', (e) => {
             eyes.forEach(item => {
-                item.classList.remove('hoveredEye')
+                item.classList.remove('doll_4_hoveredEye')
             })
-            if (!head.classList.contains('selected')) {
+            if (!head.classList.contains('doll_4_selected')) {
                 playSound(soundRing)
             }
         })
         item.addEventListener('click', (e) => {
-            if (!item.classList.contains('selectedEye')) {
+            if (!item.classList.contains('doll_4_selectedEye')) {
                 eyesMove();
                 eyes.forEach(item => {
-                    item.classList.add('selectedEye')
+                    item.classList.add('doll_4_selectedEye')
                 })
 
                 win++
@@ -236,28 +236,28 @@
     //mouth
 
     mouth.addEventListener('mouseover', () => {
-        if (!eyes[0].classList.contains('hoveredEye')) {
-            mouth.classList.add('hoveredEye')
+        if (!eyes[0].classList.contains('doll_4_hoveredEye')) {
+            mouth.classList.add('doll_4_hoveredEye')
         }
 
     })
     mouth.addEventListener('mouseenter', () => {
-        if (!mouth.classList.contains('selectedEye')) {
+        if (!mouth.classList.contains('doll_4_selectedEye')) {
             playSound(soundRing)
             console.log('mouth')
         }
     })
     mouth.addEventListener('mouseleave', () => {
-        mouth.classList.remove('hoveredEye')
-        if (!head.classList.contains('selected')) {
+        mouth.classList.remove('doll_4_hoveredEye')
+        if (!head.classList.contains('doll_4_selected')) {
             playSound(soundRing)
         }
     })
     mouth.addEventListener('click', (e) => {
-        if (!eyes[0].classList.contains('hoveredEye')) {
-            if (!mouth.classList.contains('selectedEye')) {
+        if (!eyes[0].classList.contains('doll_4_hoveredEye')) {
+            if (!mouth.classList.contains('doll_4_selectedEye')) {
                 lipsMove();
-                mouth.classList.add('selectedEye')
+                mouth.classList.add('doll_4_selectedEye')
                 win++
                 setTimeout(() => winCheker(), 1500)
             }
@@ -288,20 +288,20 @@
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', () => {
         legs.forEach(item => {
-            item.classList.remove('selected')
+            item.classList.remove('doll_4_selected')
         })
         hands.forEach(item => {
-            item.classList.remove('selected')
+            item.classList.remove('doll_4_selected')
         })
         eyes.forEach(item => {
-            item.classList.remove('selectedEye')
+            item.classList.remove('doll_4_selectedEye')
         })
-        head.classList.remove('selected')
-        face.classList.remove('selected')
-        mouth.classList.remove('selectedEye')
+        head.classList.remove('doll_4_selected')
+        face.classList.remove('doll_4_selected')
+        mouth.classList.remove('doll_4_selectedEye')
         win = 0
         well_done.classList.remove('onViewdoll_4');
-        doll.classList.remove('hide')
+        doll.classList.remove('doll_4_hide')
         resetMoving();
     });
 
@@ -338,7 +338,7 @@
     function winTextSwitcher() {
         setTimeout(() => {
             well_done.classList.add('onViewdoll_4');
-            doll.classList.add('hide')
+            doll.classList.add('doll_4_hide')
             soundOn && playSound(soundWin);
         }, 2000)
 

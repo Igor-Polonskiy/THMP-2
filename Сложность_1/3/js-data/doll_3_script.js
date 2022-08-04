@@ -18,7 +18,7 @@
     
 
 
-    // hide" draggable="true" ondrop="return false"
+    // doll_3_hide" draggable="true" ondrop="return false"
 
     const elemsdoll_3_ = wrapper.querySelectorAll('.doll_3_item');
     imgs.forEach(item => {
@@ -37,7 +37,7 @@
                 item.classList.add('hoveredDoll')
                 playSound(soundFun)
                 setTimeout(()=>{
-                    insideBox.classList.add('hide')
+                    insideBox.classList.add('doll_3_hide')
                     well_done.classList.add('onViewdoll_3');
                 },2000)
             }
@@ -71,7 +71,7 @@
 
     // Обработчик кнопки "Вернуть к исходному состоянию"
     resetBtn.addEventListener('click', () => {
-        insideBox.classList.remove('hide')
+        insideBox.classList.remove('doll_3_hide')
         well_done.classList.remove('onViewdoll_3');
         doll.classList.remove('hoveredDoll')
     });

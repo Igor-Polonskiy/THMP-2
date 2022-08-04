@@ -12,6 +12,18 @@ html {
   position: relative;
   overflow-x: hidden;
 }
+.doll_9_ContentBlocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  align-items: center;
+  background: url(../Images_1/doll_img/background.jpg) center no-repeat;
+  z-index: 500;
+}
 
 .doll_9_Wrapper {
   user-select: none;

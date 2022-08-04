@@ -13,7 +13,18 @@ html {
   /* position: relative; */
   overflow-x: hidden;
 }
-
+.doll_5_ContentBlocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  align-items: center;
+  background: url(../Images_1/doll_img/background.jpg) center no-repeat;
+  z-index: 500;
+}
 .doll_5_wrapper {
   display: flex;
   align-items: center;
@@ -97,7 +108,7 @@ html {
   cursor: url(../Images_1/doll_img/cursor.png), auto;
 }
 
-.hide {
+.doll_5_hide {
   opacity: 0;
   transition: all 1s ease;
   pointer-events: none;

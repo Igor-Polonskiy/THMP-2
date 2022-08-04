@@ -138,7 +138,7 @@ fullScreenBtn.addEventListener('click', function (event) {
     draggingElem.style.top = null;
     draggingElem.style.left = null;
   }
-
+console.log(elemBelow)
   // функция для возврата элемента в первоначальную область
   function dragAppend(dropPlace, draggingElem, findIdx) {
     const referenceElement = [...dropPlace.children][findIdx];
@@ -268,6 +268,7 @@ fullScreenBtn.addEventListener('click', function (event) {
     draggingItem.addEventListener("pointerup", onpointerup);
 
     function onpointerup() {
+      console.log(elemBelow.parentElement?.id)
       if (clickWithoutMove) {
         smoothTransition(draggingItem);
         setTimeout(
