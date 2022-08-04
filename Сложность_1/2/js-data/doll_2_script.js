@@ -42,7 +42,7 @@
         doll.classList.remove('doll_2_rotate')
         eyes.style.display = 'none'
         bed.removeEventListener('pointerdown', bedShake)
-        bed.classList.remove('hidden')
+        // bed.classList.remove('hidden')
 
     }
     
@@ -103,7 +103,7 @@
         bed.removeEventListener('pointerdown', bedShake)
         setTimeout(() => {
             well_done.classList.add('onViewdoll_2')
-            bed.classList.add('hidden')
+            // bed.classList.add('hidden')
         }, 1000)
 
     }
