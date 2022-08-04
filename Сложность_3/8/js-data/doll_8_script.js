@@ -4,7 +4,7 @@
   const divMain = wrapper.querySelector(".doll_8_Main");
   const resetBtn = wrapper.querySelector(".doll_8_ResetBtn");
   const soundBtn = wrapper.querySelector(".doll_8_MuteSound");
-  const soundBtfullScreenBtn = wrapper.querySelector(".doll_8_FullScreenBtn");
+  const fullScreenBtn = wrapper.querySelector(".doll_8_FullScreenBtn");
 
   const contentBlocker = "doll_8_ContentBlocker";
   const well_done = wrapper.querySelector(".doll_8_Well_done");
@@ -133,26 +133,26 @@
     well_done.classList.remove("onViewdoll_8");
   });
 
-  // Обработчик кнопки "Полный экран"
-  soundBtfullScreenBtn.addEventListener(
-    "click",
-    function (event) {
-      if (wrapper.classList.contains(contentBlocker)) {
+  
+  function blockWheel(e) {
+    e.preventDefault();
+  }
+// Обработчик кнопки "Полный экран"
+fullScreenBtn.addEventListener('click', function (event) {
+    if (wrapper.classList.contains(contentBlocker)) {
         wrapper.classList.remove(contentBlocker);
-        document.getElementsByTagName("body")[0].style.overflowY = null;
-      } else {
+        document.body.removeEventListener('mousewheel',blockWheel, {passive:false});
+    } else {
         wrapper.classList.add(contentBlocker);
-        document.getElementsByTagName("body")[0].style.overflowY = "hidden";
-      }
-      if (!event.target.hasAttribute("data-toggle-fullscreen")) return;
-      if (document.fullscreenElement) {
+        document.body.addEventListener('mousewheel', blockWheel, {passive:false})
+    }
+    if (!event.target.hasAttribute('data-toggle-fullscreen')) return;
+    if (document.fullscreenElement) {
         document.exitFullscreen();
-      } else {
+    } else {
         document.documentElement.requestFullscreen();
-      }
-    },
-    false
-  );
+    }
+}, false);
 
   function winTextSwitcher() {
     if (!well_done.classList.contains("onViewdoll_8")) {

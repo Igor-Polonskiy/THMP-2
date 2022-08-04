@@ -3,7 +3,7 @@
 
     const resetBtn = wrapper.querySelector('.doll_1_ResetBtn');
     const soundBtn = wrapper.querySelector('.doll_1_MuteSound');
-    const soundBtfullScreenBtn = wrapper.querySelector('.doll_1_FullScreenBtn');
+    const fullScreenBtn = wrapper.querySelector('.doll_1_FullScreenBtn');
     const doll = wrapper.querySelector('#Layer_1')
     const well_done = wrapper.querySelector('.doll_1_Well_done');
     const legs = wrapper.querySelectorAll('.leg')
@@ -143,15 +143,18 @@
         doll.classList.remove('doll_1_hide')
     });
 
+    function blockWheel(e) {
+        e.preventDefault();
+      }
 
     // Обработчик кнопки "Полный экран"
-    soundBtfullScreenBtn.addEventListener('click', function (event) {
+   fullScreenBtn.addEventListener('click', function (event) {
         if (wrapper.classList.contains(contentBlocker)) {
             wrapper.classList.remove(contentBlocker);
-            document.getElementsByTagName('body')[0].style.overflowY = null;
+            document.body.removeEventListener('mousewheel',blockWheel, {passive:false});
         } else {
             wrapper.classList.add(contentBlocker);
-            document.getElementsByTagName('body')[0].style.overflowY = "hidden";
+            document.body.addEventListener('mousewheel', blockWheel, {passive:false})
         }
         if (!event.target.hasAttribute('data-toggle-fullscreen')) return;
         if (document.fullscreenElement) {

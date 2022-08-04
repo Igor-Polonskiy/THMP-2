@@ -24,6 +24,7 @@
     const bed1 = wrapper.querySelector('.doll_2_sleeping_1')
     const bed2 = wrapper.querySelector('.doll_2_sleeping_2')
     const bed3 = wrapper.querySelector('.doll_2_sleeping_3')
+    const contentBlocker = 'doll_2_ContentBlocker';
 
 
     // Собирается элементы в переменные, создаются вспомогательные переменные
@@ -44,16 +45,19 @@
         bed.classList.remove('hidden')
 
     }
-    // Обработчик кнопки "Полный экран"
+    
+    function blockWheel(e) {
+        e.preventDefault();
+      }
 
-    fullScreenBtn.addEventListener('click', function (event) {
-        if (wrapper.classList.contains('doll_2_Content-blocker')) {
-            wrapper.classList.remove('doll_2_Content-blocker');
-            document.getElementsByTagName('body')[0].style.overflowY = null;
-        }
-        else {
-            wrapper.classList.add('doll_2_Content-blocker');
-            document.getElementsByTagName('body')[0].style.overflowY = "hidden";
+    // Обработчик кнопки "Полный экран"
+   fullScreenBtn.addEventListener('click', function (event) {
+        if (wrapper.classList.contains(contentBlocker)) {
+            wrapper.classList.remove(contentBlocker);
+            document.body.removeEventListener('mousewheel',blockWheel, {passive:false});
+        } else {
+            wrapper.classList.add(contentBlocker);
+            document.body.addEventListener('mousewheel', blockWheel, {passive:false})
         }
         if (!event.target.hasAttribute('data-toggle-fullscreen')) return;
         if (document.fullscreenElement) {
@@ -62,7 +66,6 @@
             document.documentElement.requestFullscreen();
         }
     }, false);
-
     let soundOn = false;
     soundBtn.addEventListener('click', soundChanger);
     function soundChanger() {
