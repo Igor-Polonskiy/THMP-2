@@ -18,32 +18,7 @@
   const winSound = wrapper.querySelector("#doll_5_2_mmr");
 
   let soundOn = false;
-
   let currentSound;
-  const dollActions = [
-    {
-      id: 1,
-      name: "doll_stands",
-      src: "Images_1/doll_img/walk.gif",
-    },
-    {
-      id: 2,
-      name: "doll-sitting",
-      src: "Images_1/doll_img/doll-sitting-on-chair.png",
-    },
-    {
-      id: 3,
-      name: "doll-eating",
-      src: "Images_1/doll_img/eat.gif",
-    },
-    {
-      id: 4,
-      name: "doll-sleeping",
-      src: "Images_1/doll_img/sleep.gif",
-    },
-  ];
-
-  divMain.insertAdjacentHTML("beforeend", createMarkup(dollActions));
 
   const redBtn = wrapper.querySelectorAll(".doll_5_red-button");
   const allActionsBlocks = wrapper.querySelectorAll(".doll_5_action");
@@ -129,22 +104,6 @@
 
   function playSound(audio) {
     soundOn && audio.play();
-  }
-
-  function createMarkup(pictures) {
-    return pictures
-      .map((picture, index) => {
-        const isVisible = index === 0 ? "" : "hide";
-        const backgroundColor =
-          picture.name === "doll-sitting" ? "doll_5_sitting" : "";
-
-        return `<div class="doll_5_action ${isVisible}" data-id=${picture.id}>
-                      <div style="background-image:url(${picture.src})" data-id=${picture.id} class='doll_5_image ${backgroundColor}'></div>
-                      <div id=${picture.id} class="doll_5_red-button"></div>
-                      </div>
-                      `;
-      })
-      .join("");
   }
 
   // Обработчик кнопки "Вернуть к исходному состоянию"
